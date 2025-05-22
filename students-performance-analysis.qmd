@@ -1,7 +1,16 @@
 ---
 title: "Assignment 3"
-format: html
+format:
+  html:
+    toc: true 
+    toc-depth: 2         
+    number-sections: true  
+    fig-cap-location: bottom 
+    warning: False 
+    message: False
+    code-block-bg: true 
 editor: visual
+fontsize: 11pt
 ---
 
 # Investigating the relationship between student's academic performance and lifestyle habits
@@ -21,6 +30,9 @@ library("here")
 library("tidyverse")
 library("ggplot2")
 library("ggcorrplot")
+library('readr')
+library('corrplot')
+library('tinytex')
 ```
 
 Reading in the data
@@ -28,7 +40,7 @@ Reading in the data
 ```{r}
 #| label: reading the data set for the first time 
 
-data <- read_csv(here("data", "student_habits_performance.csv"))
+data <- read_csv(here("data/student_habits_performance.csv"))
 
 ```
 
@@ -41,19 +53,78 @@ We conducted a correlation analysis using numeric variables from our dataset to 
 First, we filtered the dataset to retain these four variables that are related to our analysis. Then, we computed a Pearson correlation matrix and accounted for any missing values. We then visualised the correlation between `exam_score` and the other predictive variables in order to aid our analysis of which study habits are most strongly correlated with academic success.
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: cleaning the dataset a bit for further processing 
+data_clean <- data |>
+  rename(
+    Study = study_hours_per_day,
+    Attendance = attendance_percentage,
+    Sleep = sleep_hours,
+    Score = exam_score
+  )
+```
+
+```{r}
+#| label: good-habits-correlation
+#| fig-cap: "Figure 1: Correlation matrix of student habits and exam scores"
 
 # Selecting relevant variables 
-
 good_habits <- data |>
-  select(study_hours_per_day, attendance_percentage, sleep_hours, exam_score)
+  select(
+    study_hours_per_day,
+    attendance_percentage,
+    sleep_hours,
+    exam_score
+  )
 
 # Creating a correlation matrix for these variables 
-good_cor_matrix <- cor(good_habits , use = "complete.obs")
+good_cor_matrix <- good_habits |>
+  cor(use = "complete.obs")
 
 # Visualising correlation to good habits 
-ggcorrplot(good_cor_matrix, method = "circle", type = "lower",
-           lab = TRUE, lab_size = 4, title = "Figure 1: Correlation Matrix of 'Good' Student Habits and Exam Score")
+ggcorrplot(
+  good_cor_matrix,
+  method = "circle",
+  type = "lower",
+  lab = TRUE,
+  lab_size = 4,
+  title = "Correlation of Study Habits with Exam Score"
+)
 ```
+
+```{r}
+#| label: bubble-corrplot
+#| fig-cap: "Figure 2: Bubble-style correlation matrix of student habits and exam score"
+
+# Correlation matrix
+bubble_corr <- data_clean |>
+  select(Study, Attendance, Sleep, Score) |>
+  cor(use = "complete.obs")
+
+# Bubble matrix plot
+corrplot(
+  bubble_corr,
+  method = "circle",
+  type = "lower",
+  order = "original",
+  tl.col = "black",
+  tl.srt = 45,
+  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
+  addCoef.col = "black",
+  number.cex = 0.8,
+  diag = FALSE
+)
+```
+REASONING: 
+The above shows a bubble-style correlation matrix showing the relationships between key student habits (Study, Attendance, and Sleep) and their final exam scores. The size and color of each circle represent the strength and direction of correlation between variable pairs.
+
+Stronger positive relationships appear as large blue circles, while stronger negative relationships are large red circles. For instance, Study shows a strong positive correlation with Score, indicating that increased study hours are closely associated with better exam performance. In contrast, Sleep and Attendance show very weak or negligible correlations with Score, suggesting minimal impact in this dataset.
+
+This visual summary helps quickly identify which student behaviors are most closely aligned with academic outcomes.
+
+
 
 ### Investigating 'bad' habits
 
