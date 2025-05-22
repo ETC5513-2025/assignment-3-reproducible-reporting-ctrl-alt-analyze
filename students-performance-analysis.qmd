@@ -20,22 +20,42 @@ Loading required libraries
 library("here")
 library("tidyverse")
 library("ggplot2")
+library("ggcorrplot")
 ```
-
 
 Reading in the data
 
 ```{r}
 #| label: reading the data set for the first time 
 
-data <- read_csv(here("student_habits_performance.csv"))
+data <- read_csv(here("data", "student_habits_performance.csv"))
 
 ```
 
 ### Investigating 'good' habits
 
-### Investigating 'bad' habits
+**Methodology**
 
+We conducted a correlation analysis using numeric variables from our dataset to investigate the relationship between 'good' student lifestyle habits and academic performance. Specifically, we focused on three indicators of good lifestyle habits: `study_hours_per_day` , `attendance_percentage` , and `sleep_hours` , alongside the outcome variable `exam_score`.
+
+First, we filtered the dataset to retain these four variables that are related to our analysis. Then, we computed a Pearson correlation matrix and accounted for any missing values. We then visualised the correlation between `exam_score` and the other predictive variables in order to aid our analysis of which study habits are most strongly correlated with academic success.
+
+```{r}
+
+# Selecting relevant variables 
+
+good_habits <- data |>
+  select(study_hours_per_day, attendance_percentage, sleep_hours, exam_score)
+
+# Creating a correlation matrix for these variables 
+good_cor_matrix <- cor(good_habits , use = "complete.obs")
+
+# Visualising correlation to good habits 
+ggcorrplot(good_cor_matrix, method = "circle", type = "lower",
+           lab = TRUE, lab_size = 4, title = "Figure 1: Correlation Matrix of 'Good' Student Habits and Exam Score")
+```
+
+### Investigating 'bad' habits
 
 ## Results
 
