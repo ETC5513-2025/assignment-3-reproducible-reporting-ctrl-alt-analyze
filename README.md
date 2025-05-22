@@ -7,3 +7,5 @@ Group Members:
 *
 
 Topic: 
+
+I’ve added the content related to bad habits to the document.

@@ -117,16 +117,72 @@ corrplot(
   diag = FALSE
 )
 ```
-REASONING: 
-The above shows a bubble-style correlation matrix showing the relationships between key student habits (Study, Attendance, and Sleep) and their final exam scores. The size and color of each circle represent the strength and direction of correlation between variable pairs.
+
+REASONING: The above shows a bubble-style correlation matrix showing the relationships between key student habits (Study, Attendance, and Sleep) and their final exam scores. The size and color of each circle represent the strength and direction of correlation between variable pairs.
 
 Stronger positive relationships appear as large blue circles, while stronger negative relationships are large red circles. For instance, Study shows a strong positive correlation with Score, indicating that increased study hours are closely associated with better exam performance. In contrast, Sleep and Attendance show very weak or negligible correlations with Score, suggesting minimal impact in this dataset.
 
 This visual summary helps quickly identify which student behaviors are most closely aligned with academic outcomes.
 
-
-
 ### Investigating 'bad' habits
+
+**Methodology** To investigate the relationship between 'bad' student lifestyle habits and academic performance, we continued our correlation analysis using numeric variables from the dataset. Specifically, we focused on two indicators of poor lifestyle habits: `social_media_hours` and `netflix_hours`, along with the outcome variable `exam_score`.
+
+First, we filtered the dataset to retain the three variables relevant to this analysis. Then, we computed a Pearson correlation matrix while accounting for any missing values. Finally, we visualised the correlation between `exam_score` and the other predictive variables to help identify which negative habits are most strongly associated with academic success.
+
+```{r}
+#| label: bad-habits-correlation
+#| fig-cap: "Figure 3: Correlation matrix of bad habits and exam scores"
+
+# Selecting relevant variables 
+bad_habits <- data |>
+  select(
+    social_media_hours,
+    netflix_hours,
+    exam_score
+  )
+
+# Creating a correlation matrix for these variables
+bad_cor_matrix <- bad_habits |>
+  cor(use = "complete.obs")
+
+# Visualising correlation to good habits
+ggcorrplot(
+  bad_cor_matrix,
+  method = "circle",
+  type = "lower",
+  lab = TRUE,
+  lab_size = 4,
+  title = "Correlation of Bad Habits with Exam Score"
+)
+```
+
+```{r}
+#| label: bad-habits-bubble-corrplot
+#| fig-cap: "Figure 4: Bubble-style correlation matrix of bad habits and exam score"
+
+# Correlation matrix
+bad_bubble_corr <- data |>
+  select(social_media_hours, netflix_hours, exam_score) |>
+  cor(use = "complete.obs")
+
+# Bubble matrix plot
+corrplot(
+  bad_bubble_corr,
+  method = "circle",         
+  type = "lower",            
+  order = "original",        
+  tl.col = "black",          
+  tl.srt = 45,               
+  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200), 
+  addCoef.col = "black",     
+  number.cex = 0.8,          
+  diag = FALSE               
+)
+
+```
+
+Reasoning: The above chart presents a bubble-style correlation matrix illustrating the relationship between poor student habits (social media use and Netflix viewing) and their final exam scores. The size and color of each circle represent the strength and direction of the correlation between variable pairs. Stronger positive correlations are shown as large blue circles, while stronger negative correlations appear as large red circles. The correlation coefficient between `social_media_hours` and `exam_score` is -0.17, and between `netflix_hours` and `exam_score` is also -0.17. The two bad habit variables themselves show almost no correlation, with a coefficient of 0.01. This indicates that both social media usage and time spent watching Netflix have a weak negative relationship with academic performance. In other words, the more time spent on these activities, the slightly lower the exam scores. However, this correlation is weak and insufficient on its own to explain variations in academic outcomes.
 
 ## Results
 
