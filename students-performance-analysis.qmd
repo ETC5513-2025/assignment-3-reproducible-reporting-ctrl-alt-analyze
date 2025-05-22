@@ -1,0 +1,44 @@
+---
+title: "Assignment 3"
+format: html
+editor: visual
+---
+
+# Investigating the relationship between student's academic performance and lifestyle habits
+
+## Executive summary
+
+## Introduction
+
+## Methodology
+
+Loading required libraries
+
+```{r}
+#| label: Loading the required libraries 
+
+library("here")
+library("tidyverse")
+library("ggplot2")
+```
+
+
+Reading in the data
+
+```{r}
+#| label: reading the data set for the first time 
+
+data <- read_csv(here("student_habits_performance.csv"))
+
+```
+
+### Investigating 'good' habits
+
+### Investigating 'bad' habits
+
+
+## Results
+
+## Discussion
+
+## References
