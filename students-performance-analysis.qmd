@@ -13,19 +13,25 @@ editor: visual
 fontsize: 11pt
 ---
 
-# Investigating the relationship between student's academic performance and lifestyle habits
+-   
 
-## Executive summary
+-   Table of contents: Defining using adequate YAML syntax
 
-This report uses correlation analysis to study the relationship between students' habits and exam scores. We select study hours, attendance percentage and sleep hours as good habits, and social media hours and Netflix hours as bad habits. The study compared the relationship between good habits and bad habits on exam scores. The results show that there is the strongest positive correlation between study hours and exam score, while there is a weak negative correlation between bad habits and exam scores.
+-   Executive summary: Maximum of 4 sentences
 
-## Introduction
+-   Introduction: Maximum 10 sentences
 
-Students' exam scores and academic performance are influenced by various living habits. A stable study hours and class attendance rate are usually regarded as contributing to improving test scores. Spending too much time on social media and being addicted to Netflix are usually regarded as lowering test scores. This study aims to quantify the relationship between these good and bad habits and examination scores through correlation analysis. The dataset includes some basic information of the students and the numerical values of their various habits and test scores. By selecting the habits closely related to the test scores in the dataset, they were divided into two groups: good habits and bad habits, and the test scores were taken as the dependent variable. This study employs correlation analysis and visualization methods to demonstrate the relationship between variables in good and bad habits and examination scores.
+-   The body of the report should contain the following sections:
 
-## Methodology
+    -   Methodology: Maximum 300 words
 
-Loading required libraries
+        -   Should include a figure and a table and those must be referenced in the text and have adequate captions
+
+    -   Results: Maximum 200 words. Should include either a figure **or** a table.
+
+    -   Discussion, conclusion and recommendations
+
+    -   Reference section: Include at least 1 reference.
 
 ```{r}
 #| label: Loading the required libraries 
@@ -39,7 +45,40 @@ library('corrplot')
 library('tinytex')
 ```
 
-Reading in the data
+# Investigating the relationship between student's academic performance and lifestyle habits
+
+By Team : **Ctrl+Alt+Analyze**
+
+Authors:
+
+1.  Malika
+
+2.  Zuxilu
+
+3.  Kunal\
+
+## Executive summary
+
+This report investigates the relationship between student lifestyle habits and academic performance using correlation analysis. We classify study hours, class attendance, and sleep duration as “good” habits, while social media and Netflix usage are treated as “bad” habits. Our findings indicate that study hours have the strongest positive correlation with exam scores, while time spent on social media and Netflix shows weak negative correlations. These insights may guide students toward habits that are more likely to support academic success.
+
+## Introduction
+
+Academic performance is influenced by a range of behavioral and lifestyle factors. Habits such as consistent study routines, classroom attendance, and adequate sleep are commonly associated with better exam outcomes. In contrast, excessive time spent on social media and streaming platforms may reduce focus and study time. This study aims to quantify the relationship between these habits and academic performance using correlation analysis. The dataset includes student-reported habits and their corresponding exam scores. We define “good habits” as study hours, class attendance, and sleep hours, and “bad habits” as social media and Netflix usage. Using correlation matrices and visualizations, we examine how each habit is associated with exam performance. Our goal is to identify which habits have the strongest relationship with scores and whether they are positive or negative. The findings may provide insight into which behaviors support or hinder academic success. This report is structured to include our methodology, results, discussion, and recommendations.
+
+## Methodology
+
+```{r}
+library(knitr)
+kable(good_cor_matrix, digits = 2)
+```
+
+We conducted a correlation analysis to investigate the relationship between selected student habits and academic performance. Specifically, we focused on three indicators of “good” habits: study hours per day, attendance percentage, and sleep hours. The target variable for academic performance was the students’ exam score. After selecting relevant columns from the dataset, we calculated the Pearson correlation matrix while handling any missing values.
+
+Table 1 presents the correlation coefficients between the selected good habits and exam scores. We found that study hours had the strongest positive correlation with exam score (r = 0.78), while attendance and sleep showed weaker relationships. These insights were visualized using a circle-style correlation plot (Figure 1) to intuitively communicate the strength and direction of relationships.
+
+The figure displays a lower-triangle matrix using color and size to highlight strong and weak correlations. This helped us quickly identify the most impactful variables. Based on both the numeric summary and the visual representation, study hours emerged as the most influential predictor of exam performance among the good habits selected.
+
+## Reading in the data
 
 ```{r}
 #| label: reading the data set for the first time 
@@ -48,9 +87,9 @@ data <- read_csv(here("data/student_habits_performance.csv"))
 
 ```
 
-### Investigating 'good' habits
+# Investigating 'good' habits
 
-**Methodology**
+## **Methodology**
 
 We conducted a correlation analysis using numeric variables from our dataset to investigate the relationship between 'good' student lifestyle habits and academic performance. Specifically, we focused on three indicators of good lifestyle habits: `study_hours_per_day` , `attendance_percentage` , and `sleep_hours` , alongside the outcome variable `exam_score`.
 
@@ -68,34 +107,6 @@ data_clean <- data |>
     Sleep = sleep_hours,
     Score = exam_score
   )
-```
-
-```{r}
-#| label: good-habits-correlation
-#| fig-cap: "Figure 1: Correlation matrix of student habits and exam scores"
-
-# Selecting relevant variables 
-good_habits <- data |>
-  select(
-    study_hours_per_day,
-    attendance_percentage,
-    sleep_hours,
-    exam_score
-  )
-
-# Creating a correlation matrix for these variables 
-good_cor_matrix <- good_habits |>
-  cor(use = "complete.obs")
-
-# Visualising correlation to good habits 
-ggcorrplot(
-  good_cor_matrix,
-  method = "circle",
-  type = "lower",
-  lab = TRUE,
-  lab_size = 4,
-  title = "Correlation of Study Habits with Exam Score"
-)
 ```
 
 ```{r}
@@ -121,75 +132,3 @@ corrplot(
   diag = FALSE
 )
 ```
-
-REASONING: The above shows a bubble-style correlation matrix showing the relationships between key student habits (Study, Attendance, and Sleep) and their final exam scores. The size and color of each circle represent the strength and direction of correlation between variable pairs.
-
-Stronger positive relationships appear as large blue circles, while stronger negative relationships are large red circles. For instance, Study shows a strong positive correlation with Score, indicating that increased study hours are closely associated with better exam performance. In contrast, Sleep and Attendance show very weak or negligible correlations with Score, suggesting minimal impact in this dataset.
-
-This visual summary helps quickly identify which student behaviors are most closely aligned with academic outcomes.
-
-### Investigating 'bad' habits
-
-**Methodology** To investigate the relationship between 'bad' student lifestyle habits and academic performance, we continued our correlation analysis using numeric variables from the dataset. Specifically, we focused on two indicators of poor lifestyle habits: `social_media_hours` and `netflix_hours`, along with the outcome variable `exam_score`.
-
-First, we filtered the dataset to retain the three variables relevant to this analysis. Then, we computed a Pearson correlation matrix while accounting for any missing values. Finally, we visualised the correlation between `exam_score` and the other predictive variables to help identify which negative habits are most strongly associated with academic success.
-
-```{r}
-#| label: bad-habits-correlation
-#| fig-cap: "Figure 3: Correlation matrix of bad habits and exam scores"
-
-# Selecting relevant variables 
-bad_habits <- data |>
-  select(
-    social_media_hours,
-    netflix_hours,
-    exam_score
-  )
-
-# Creating a correlation matrix for these variables
-bad_cor_matrix <- bad_habits |>
-  cor(use = "complete.obs")
-
-# Visualising correlation to good habits
-ggcorrplot(
-  bad_cor_matrix,
-  method = "circle",
-  type = "lower",
-  lab = TRUE,
-  lab_size = 4,
-  title = "Correlation of Bad Habits with Exam Score"
-)
-```
-
-```{r}
-#| label: bad-habits-bubble-corrplot
-#| fig-cap: "Figure 4: Bubble-style correlation matrix of bad habits and exam score"
-
-# Correlation matrix
-bad_bubble_corr <- data |>
-  select(social_media_hours, netflix_hours, exam_score) |>
-  cor(use = "complete.obs")
-
-# Bubble matrix plot
-corrplot(
-  bad_bubble_corr,
-  method = "circle",         
-  type = "lower",            
-  order = "original",        
-  tl.col = "black",          
-  tl.srt = 45,               
-  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200), 
-  addCoef.col = "black",     
-  number.cex = 0.8,          
-  diag = FALSE               
-)
-
-```
-
-Reasoning: The above chart presents a bubble-style correlation matrix illustrating the relationship between poor student habits (social media use and Netflix viewing) and their final exam scores. The size and color of each circle represent the strength and direction of the correlation between variable pairs. Stronger positive correlations are shown as large blue circles, while stronger negative correlations appear as large red circles. The correlation coefficient between `social_media_hours` and `exam_score` is -0.17, and between `netflix_hours` and `exam_score` is also -0.17. The two bad habit variables themselves show almost no correlation, with a coefficient of 0.01. This indicates that both social media usage and time spent watching Netflix have a weak negative relationship with academic performance. In other words, the more time spent on these activities, the slightly lower the exam scores. However, this correlation is weak and insufficient on its own to explain variations in academic outcomes.
-
-## Results
-
-## Discussion
-
-## References
