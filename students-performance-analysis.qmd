@@ -15,12 +15,6 @@ fontsize: 11pt
 
 -   
 
--   Table of contents: Defining using adequate YAML syntax
-
--   Executive summary: Maximum of 4 sentences
-
--   Introduction: Maximum 10 sentences
-
 -   The body of the report should contain the following sections:
 
     -   Methodology: Maximum 300 words
@@ -45,6 +39,20 @@ library('corrplot')
 library('tinytex')
 ```
 
+```{r}
+#| label: reading the data set for the first time 
+
+data <- read_csv(here("data/student_habits_performance.csv")) 
+
+# renaming of things 
+good_habits <- data |>
+  select(study_hours_per_day, attendance_percentage, sleep_hours, exam_score)
+
+good_cor_matrix <- good_habits |>
+  cor(use = "complete.obs")
+
+```
+
 # Investigating the relationship between student's academic performance and lifestyle habits
 
 By Team : **Ctrl+Alt+Analyze**
@@ -55,7 +63,7 @@ Authors:
 
 2.  Zuxilu
 
-3.  Kunal\
+3.  Kunal
 
 ## Executive summary
 
@@ -68,6 +76,7 @@ Academic performance is influenced by a range of behavioral and lifestyle factor
 ## Methodology
 
 ```{r}
+#| tbl-cap: "Table 1: Correlation matrix of good habits and exam score"
 library(knitr)
 kable(good_cor_matrix, digits = 2)
 ```
@@ -78,54 +87,120 @@ Table 1 presents the correlation coefficients between the selected good habits a
 
 The figure displays a lower-triangle matrix using color and size to highlight strong and weak correlations. This helped us quickly identify the most impactful variables. Based on both the numeric summary and the visual representation, study hours emerged as the most influential predictor of exam performance among the good habits selected.
 
-## Reading in the data
+# Investigating 'good' habits'
 
-```{r}
-#| label: reading the data set for the first time 
+-   The chart shows how three good habits relate to student exam scores:
 
-data <- read_csv(here("data/student_habits_performance.csv"))
+    -   StudyHours, AttendanceRate, and SleepHours.
 
-```
+-   **StudyHours** has a **strong positive correlation** with ExamScore (r = 0.83).
 
-# Investigating 'good' habits
+    -    Students who study more tend to score higher.
 
-## **Methodology**
+-   **AttendanceRate** and **SleepHours** both show **weak positive correlations**
 
-We conducted a correlation analysis using numeric variables from our dataset to investigate the relationship between 'good' student lifestyle habits and academic performance. Specifically, we focused on three indicators of good lifestyle habits: `study_hours_per_day` , `attendance_percentage` , and `sleep_hours` , alongside the outcome variable `exam_score`.
+    -   Attendance (r = 0.09) and Sleep (r = 0.12) have little impact on scores.
 
-First, we filtered the dataset to retain these four variables that are related to our analysis. Then, we computed a Pearson correlation matrix and accounted for any missing values. We then visualised the correlation between `exam_score` and the other predictive variables in order to aid our analysis of which study habits are most strongly correlated with academic success.
+-   **Conclusion:** Among the good habits, **studying regularly** is clearly the most effective for better academic performance.
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
 #| label: cleaning the dataset a bit for further processing 
+
 data_clean <- data |>
   rename(
-    Study = study_hours_per_day,
-    Attendance = attendance_percentage,
-    Sleep = sleep_hours,
-    Score = exam_score
+    StudentID = student_id,
+    Age = age,
+    Gender = gender,
+    StudyHours = study_hours_per_day,
+    SocialMediaHours = social_media_hours,
+    NetflixHours = netflix_hours,
+    PartTimeJob = part_time_job,
+    AttendanceRate = attendance_percentage,
+    SleepHours = sleep_hours,
+    DietQuality = diet_quality,
+    ExerciseFrequency = exercise_frequency,
+    ParentalEducation = parental_education_level,
+    InternetQuality = internet_quality,
+    MentalHealth = mental_health_rating,
+    Extracurriculars = extracurricular_participation,
+    ExamScore = exam_score
   )
+
 ```
 
 ```{r}
 #| label: bubble-corrplot
-#| fig-cap: "Figure 2: Bubble-style correlation matrix of student habits and exam score"
+#| fig-cap: "**Figure 1**: Bubble-style correlation matrix of student habits and exam score"
 
-# Correlation matrix
+# Compute correlation matrix using proper column names
 bubble_corr <- data_clean |>
-  select(Study, Attendance, Sleep, Score) |>
+  select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
   cor(use = "complete.obs")
 
-# Bubble matrix plot
+# Bubble matrix plot with enhanced aesthetics
 corrplot(
   bubble_corr,
+  method = "circle",
+  type = "lower",
+  order = "hclust",
+  tl.col = "black",
+  tl.srt = 45,
+  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
+  addCoef.col = "black",
+  number.cex = 0.9,
+  diag = FALSE
+)
+
+```
+
+------------------------------------------------------------------------------------------
+
+# Investigating 'bad' habits'
+
+-   The chart shows how two bad habits relate to exam performance:
+
+    -   SocialMediaHours and NetflixHours.
+
+-   Both habits have **weak negative correlations** with ExamScore (r = -0.17 each).
+
+    -    More time spent on these may slightly lower scores.
+
+-   The two habits are **not correlated with each other** (r = 0.01).
+
+    -   Social media and Netflix usage appear to be independent.
+
+-   **Conclusion:** These habits may slightly harm performance, but the effect is **not strong** or highly predictive.
+
+```{r}
+#| label: bubble-corrplot-bad
+#| fig-cap: "**Figure 2**: Bubble-style correlation matrix of bad habits and exam score"
+
+# Create correlation matrix
+bad_bubble_corr <- data_clean |>
+  select(SocialMediaHours, NetflixHours, ExamScore) |>
+  cor(use = "complete.obs") |>
+  round(2)
+
+# Rename just for the plot
+colnames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
+rownames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
+
+# Set margins to avoid clipping
+par(mar = c(2, 2, 5, 2))  # Add space on top
+
+# Plot
+corrplot(
+  bad_bubble_corr,
   method = "circle",
   type = "lower",
   order = "original",
   tl.col = "black",
   tl.srt = 45,
+  tl.cex = 0.9,
+  cl.cex = 0.8,
   col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
   addCoef.col = "black",
   number.cex = 0.8,
