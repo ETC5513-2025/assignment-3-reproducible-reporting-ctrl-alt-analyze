@@ -207,3 +207,47 @@ corrplot(
   diag = FALSE
 )
 ```
+
+# Results: 
+
+The table below summarizes how each lifestyle habit correlates with academic performance.
+
+**Table 1** shows that `StudyHours` has a strong positive relationship with `ExamScore` (r = 0.83), making it the most significant factor influencing academic success. `AttendanceRate` (r = 0.09) and `SleepHours` (r = 0.12) show weak positive associations, suggesting minor contributions.
+
+In contrast, both `SocialMediaHours` and `NetflixHours` have weak negative correlations with exam scores (r = -0.17 each), indicating that increased screen time may slightly reduce performance. However, the strength of these negative relationships is modest and not highly predictive on their own.
+
+Overall, the results emphasize that consistent study habits are the most important contributor to higher academic performance, while excessive media consumption may act as a mild deterrent.
+
+```{r}
+# Select all habits of interest
+combined_corr <- data_clean |>
+  select(StudyHours, AttendanceRate, SleepHours, SocialMediaHours, NetflixHours, ExamScore) |>
+  cor(use = "complete.obs") |>
+  round(2)
+
+# Extract only exam score correlations
+score_corr <- combined_corr[, "ExamScore", drop = FALSE] |>
+  as.data.frame()
+score_corr <- score_corr[rownames(score_corr) != "ExamScore", , drop = FALSE]
+colnames(score_corr) <- "Correlation with ExamScore"
+
+kable(score_corr)
+```
+
+# Discussion, Conclusion and Recommendations: 
+
+The findings from this analysis reinforce a key academic principle: consistent study habits have the strongest impact on student performance. Among all the lifestyle factors examined, `StudyHours` had a clear and substantial correlation with `ExamScore`, while other good habits like `AttendanceRate` and `SleepHours` played minor roles.
+
+On the other hand, bad habits such as time spent on social media and Netflix showed weak negative correlations with academic performance. Although these habits may slightly affect scores, they are not as influential as focused study time. This suggests that managing distractions is helpful, but not sufficient without active effort toward academic preparation.
+
+From a practical perspective, students should prioritise building regular study routines, as this habit alone appears to yield the most significant academic benefit. Digital distractions should be monitored and managed, but not overly blamed for performance gaps without considering time spent studying.
+
+Future research could explore how motivation, learning environment, or time management interact with these habits. Additionally, collecting longitudinal data could help identify whether these correlations hold consistently over time or vary by context.
+
+# References
+
+1.  Dataset: Student Habits and Performance. Simulated dataset for academic use, 2025.
+
+2.  Ian, A., Syam, M. A., & Rante, A. (2025). The Relationship Between Study Hours and Students' Academic Achievement. *SSRN*. <https://ssrn.com/abstract=5124254>
+
+3.  Abbas, J., Aman, J., Nurunnabi, M., & Bano, S. (2023). Association between social media use and students’ academic performance: A structural equation modeling approach. *Education and Information Technologies*, 28, 123–145. <https://link.springer.com/article/10.1007/s10639-023-12407-y>
