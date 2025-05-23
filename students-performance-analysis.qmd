@@ -17,7 +17,11 @@ fontsize: 11pt
 
 ## Executive summary
 
+This report uses correlation analysis to study the relationship between students' habits and exam scores. We select study hours, attendance percentage and sleep hours as good habits, and social media hours and Netflix hours as bad habits. The study compared the relationship between good habits and bad habits on exam scores. The results show that there is the strongest positive correlation between study hours and exam score, while there is a weak negative correlation between bad habits and exam scores.
+
 ## Introduction
+
+Students' exam scores and academic performance are influenced by various living habits. A stable study hours and class attendance rate are usually regarded as contributing to improving test scores. Spending too much time on social media and being addicted to Netflix are usually regarded as lowering test scores. This study aims to quantify the relationship between these good and bad habits and examination scores through correlation analysis. The dataset includes some basic information of the students and the numerical values of their various habits and test scores. By selecting the habits closely related to the test scores in the dataset, they were divided into two groups: good habits and bad habits, and the test scores were taken as the dependent variable. This study employs correlation analysis and visualization methods to demonstrate the relationship between variables in good and bad habits and examination scores.
 
 ## Methodology
 
