@@ -14,6 +14,7 @@ fontsize: 11pt
 ---
 
 \newpage
+
 ```{r}
 #| label: Loading the required libraries 
 
@@ -25,8 +26,6 @@ library('readr')
 library('corrplot')
 library('tinytex')
 ```
-
-
 
 ```{r}
 #| label: reading the data set for the first time 
@@ -41,6 +40,7 @@ good_cor_matrix <- good_habits |>
   cor(use = "complete.obs")
 
 ```
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -75,7 +75,7 @@ By Team : **Ctrl+Alt+Analyze**
 
 Authors:
 
-1.  Malika
+1.  Malaika
 
 2.  Zuxilu
 
@@ -83,13 +83,14 @@ Authors:
 
 # Executive summary
 
-This report investigates the relationship between student lifestyle habits and academic performance using correlation analysis. We classify study hours, class attendance, and sleep duration as “good” habits, while social media and Netflix usage are treated as “bad” habits. Our findings indicate that study hours have the strongest positive correlation with exam scores, while time spent on social media and Netflix shows weak negative correlations. These insights may guide students toward habits that are more likely to support academic success.
+This report investigates the relationship between student lifestyle habits and academic performance using correlation analysis. We classify study hours, class attendance, and sleep duration as "good" habits, while social media and Netflix usage are treated as "bad" habits. Our findings indicate that study hours have the strongest positive correlation with exam scores, while time spent on social media and Netflix shows weak negative correlations. These insights may guide students toward habits that are more likely to support academic success.
 
 # Introduction
 
-Academic performance is influenced by a range of behavioral and lifestyle factors. Habits such as consistent study routines, classroom attendance, and adequate sleep are commonly associated with better exam outcomes. In contrast, excessive time spent on social media and streaming platforms may reduce focus and study time. This study aims to quantify the relationship between these habits and academic performance using correlation analysis. The dataset includes student-reported habits and their corresponding exam scores. We define “good habits” as study hours, class attendance, and sleep hours, and “bad habits” as social media and Netflix usage. Using correlation matrices and visualizations, we examine how each habit is associated with exam performance. Our goal is to identify which habits have the strongest relationship with scores and whether they are positive or negative. The findings may provide insight into which behaviors support or hinder academic success. This report is structured to include our methodology, results, discussion, and recommendations.
+Academic performance is influenced by a range of behavioral and lifestyle factors. Habits such as consistent study routines, classroom attendance, and adequate sleep are commonly associated with better exam outcomes. In contrast, excessive time spent on social media and streaming platforms may reduce focus and study time. This study aims to quantify the relationship between these habits and academic performance using correlation analysis. The dataset includes student-reported habits and their corresponding exam scores. We define "good habits" as study hours, class attendance, and sleep hours, and "bad habits" as social media and Netflix usage. Using correlation matrices and visualizations, we examine how each habit is associated with exam performance. Our goal is to identify which habits have the strongest relationship with scores and whether they are positive or negative. The findings may provide insight into which behaviors support or hinder academic success. This report is structured to include our methodology, results, discussion, and recommendations.
 
 \newpage
+
 # Methodology
 
 ```{r}
@@ -147,7 +148,7 @@ corrplot(
 
 -   **StudyHours** has a **strong positive correlation** with ExamScore (r = 0.83).
 
-    -    Students who study more tend to score higher.
+    -   Students who study more tend to score higher.
 
 -   **AttendanceRate** and **SleepHours** both show **weak positive correlations**
 
@@ -179,7 +180,9 @@ corrplot(
 )
 
 ```
+
 \newpage
+
 # Investigating 'bad' habits'
 
 -   The chart shows how two bad habits relate to exam performance:
@@ -188,7 +191,7 @@ corrplot(
 
 -   Both habits have **weak negative correlations** with ExamScore (r = -0.17 each).
 
-    -    More time spent on these may slightly lower scores.
+    -   More time spent on these may slightly lower scores.
 
 -   The two habits are **not correlated with each other** (r = 0.01).
 
@@ -229,8 +232,10 @@ corrplot(
   diag = FALSE
 )
 ```
+
 \newpage
-# Results: 
+
+# Results:
 
 The table below summarizes how each lifestyle habit correlates with academic performance.
 
@@ -255,8 +260,10 @@ colnames(score_corr) <- "Correlation with ExamScore"
 
 kable(score_corr)
 ```
+
 \newpage
-# Discussion, Conclusion and Recommendations: 
+
+# Discussion, Conclusion and Recommendations:
 
 The findings from this analysis reinforce a key academic principle: consistent study habits have the strongest impact on student performance. Among all the lifestyle factors examined, `StudyHours` had a clear and substantial correlation with `ExamScore`, while other good habits like `AttendanceRate` and `SleepHours` played minor roles.
 
@@ -272,4 +279,4 @@ Future research could explore how motivation, learning environment, or time mana
 
 2.  Ian, A., Syam, M. A., & Rante, A. (2025). The Relationship Between Study Hours and Students' Academic Achievement. *SSRN*. <https://ssrn.com/abstract=5124254>
 
-3.  Abbas, J., Aman, J., Nurunnabi, M., & Bano, S. (2023). Association between social media use and students’ academic performance: A structural equation modeling approach. *Education and Information Technologies*, 28, 123–145. <https://link.springer.com/article/10.1007/s10639-023-12407-y>
+3.  Abbas, J., Aman, J., Nurunnabi, M., & Bano, S. (2023). Association between social media use and students' academic performance: A structural equation modeling approach. *Education and Information Technologies*, 28, 123--145. <https://link.springer.com/article/10.1007/s10639-023-12407-y>
