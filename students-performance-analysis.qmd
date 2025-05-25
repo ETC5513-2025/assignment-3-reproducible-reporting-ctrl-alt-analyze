@@ -11,6 +11,7 @@ format:
     code-block-bg: true 
 editor: visual
 fontsize: 11pt
+theme: journal
 ---
 
 \newpage
