@@ -267,13 +267,15 @@ kable(score_corr)
 
 # Discussion, Conclusion and Recommendations:
 
-The findings from this analysis reinforce a key academic principle: consistent study habits have the strongest impact on student performance. Among all the lifestyle factors examined, `StudyHours` had a clear and substantial correlation with `ExamScore`, while other good habits like `AttendanceRate` and `SleepHours` played minor roles.
+-   The findings from this analysis reinforce a key academic principle: consistent study habits have the strongest impact on student performance. Among all the lifestyle factors examined, `StudyHours` had a clear and substantial correlation with `ExamScore`, while other good habits like `AttendanceRate` and `SleepHours` played minor roles.
 
-On the other hand, bad habits such as time spent on social media and Netflix showed weak negative correlations with academic performance. Although these habits may slightly affect scores, they are not as influential as focused study time. This suggests that managing distractions is helpful, but not sufficient without active effort toward academic preparation.
+-   On the other hand, bad habits such as time spent on social media and Netflix showed weak negative correlations with academic performance. Although these habits may slightly affect scores, they are not as influential as focused study time. This suggests that managing distractions is helpful, but not sufficient without active effort toward academic preparation.
 
-From a practical perspective, students should prioritise building regular study routines, as this habit alone appears to yield the most significant academic benefit. Digital distractions should be monitored and managed, but not overly blamed for performance gaps without considering time spent studying.
+-   From a practical perspective, students should prioritise building regular study routines, as this habit alone appears to yield the most significant academic benefit. Digital distractions should be monitored and managed, but not overly blamed for performance gaps without considering time spent studying.
 
-Future research could explore how motivation, learning environment, or time management interact with these habits. Additionally, collecting longitudinal data could help identify whether these correlations hold consistently over time or vary by context.
+-   Future research could explore how motivation, learning environment, or time management interact with these habits. Additionally, collecting longitudinal data could help identify whether these correlations hold consistently over time or vary by context.
+
+- YOU CAN ADD SOME CONTENT HERE AND THEN DELETE BOTH THE LINES AND THEN COMMIT 
 
 Add content here. 
 \# References
