@@ -1,8 +1,9 @@
 # ETC5513 Assignment 3
 
+Group Name: Ctrl+Alt+Analyze
 Group Members:
 
-* Malika 
+* Malaika 
 * ZuxiLu
 * Kunal 
 
