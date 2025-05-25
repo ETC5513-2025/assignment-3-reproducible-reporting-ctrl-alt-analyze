@@ -2,6 +2,7 @@
 title: "Assignment 3 by Ctrl+Alt+Analyze "
 format:
   pdf:
+    theme: lux
     toc: true 
     toc-depth: 2         
     number-sections: true  
@@ -11,7 +12,6 @@ format:
     code-block-bg: true 
 editor: visual
 fontsize: 11pt
-theme: lux
 ---
 
 \newpage
