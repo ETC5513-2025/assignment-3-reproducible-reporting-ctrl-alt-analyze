@@ -275,8 +275,6 @@ kable(score_corr)
 
 -   Future research could explore how motivation, learning environment, or time management interact with these habits. Additionally, collecting longitudinal data could help identify whether these correlations hold consistently over time or vary by context.
 
-This line was written in the main branch.
-
 \# References
 
 1.  Dataset: Student Habits and Performance. Simulated dataset for academic use, 2025.
