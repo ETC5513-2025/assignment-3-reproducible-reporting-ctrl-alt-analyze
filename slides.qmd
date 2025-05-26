@@ -148,7 +148,6 @@ print(kable(bad_cor_matrix, digits = 2))
 ## Results
 
 ::: columns
-
 -   **Study hours** shows a **strong positive correlation** with exam scores
 -   **Attendance rate** and **Sleep hours** show only **weak positive correlation** with exam scores
 
@@ -177,8 +176,10 @@ corrplot(
 
 ```
 :::
+
 ::: columns
 -   **Social media hours** and **Netflix hours** show only **weak negative correlation** with exam scores
+
 ```{r}
 #| label: bubble-corrplot-bad
 #| fig-cap: "**Figure 2**: Bubble-style correlation matrix of bad habits and exam score"
