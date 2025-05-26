@@ -138,18 +138,67 @@ Malika; Kunal; ZuxiLu
 </div>
 
 </section>
-<section id="title-slide" class="slide level2">
-<h2>Title slide</h2>
+<section class="slide level2">
+
+<h3 id="title-slide">Title slide</h3>
 </section>
-<section id="problem-introduction" class="slide level2">
-<h2>Problem introduction</h2>
+<section class="slide level2">
+
+<h3 id="problem-introduction">Problem introduction</h3>
+<ul>
+<li><p>Academic performance is affected by daily habits like:</p>
+<ul>
+<li>Study hours per day, Classroom attendance, Sleep hours</li>
+</ul></li>
+<li><p>On the other hand, spending too much time on:</p>
+<ul>
+<li>Social media, Streaming platforms like Netflix<br>
+may reduce focus and study time.</li>
+</ul></li>
+<li><p><strong>Research Objective:</strong><br>
+Quantify the relationship between student habits and academic performance using correlation analysis.</p></li>
+<li><p>We aim to discover which habits support academic success and which habits hinder it.</p></li>
+</ul>
 </section>
-<section id="dataset-description" class="slide level2">
-<h2>Dataset description</h2>
+<section class="slide level2">
+
+<h3 id="dataset-description">Dataset description</h3>
+<ul>
+<li><p>The dataset includes <strong>100 students</strong> and <strong>16 variables</strong> covering lifestyle habits and exam performance.</p></li>
+<li><p>Main variables include:</p>
+<ul>
+<li><p>Study hours per day<br>
+</p></li>
+<li><p>Class attendance (%)<br>
+</p></li>
+<li><p>Sleep hours<br>
+</p></li>
+<li><p>Social media hours<br>
+</p></li>
+<li><p>Netflix hours</p></li>
+<li><p>Exam score</p></li>
+</ul></li>
+</ul>
 </section>
-<section id="methods" class="slide level2">
-<h2>Methods</h2>
-<h3 id="analysis-method">Analysis method</h3>
+<section class="slide level2">
+
+<ul>
+<li><p>Main variables are grouped into:</p>
+<ul>
+<li><strong>Good habits:</strong><br>
+<code>StudyHours</code>, <code>AttendanceRate</code>, <code>SleepHours</code></li>
+<li><strong>Bad habits:</strong><br>
+<code>SocialMediaHours</code>, <code>NetflixHours</code></li>
+</ul></li>
+<li><p>Target variable:<br>
+<code>ExamScore</code> (numeric score for student performance)</p></li>
+<li><p>Data was cleaned and renamed for clarity before analysis.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="methods">Methods</h3>
+<h4 id="analysis-method">Analysis method</h4>
 <p><strong>Correlational analysis</strong> used to test how student lifestyle habits relate to academic performance</p>
 <h3 id="technique">Technique</h3>
 <ul>
@@ -158,13 +207,10 @@ Malika; Kunal; ZuxiLu
 <span style="color:red">Red</span> = negative<br>
 Circle size = strength</li>
 </ul>
-<div>
-
-</div>
-<div class="cell quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><strong>Table 1: Good Habits and Exam Score Correlation</strong></p>
+</section>
+<section id="table-1" class="slide level2">
+<h2>Table: 1</h2>
+<h3 id="table-1-good-habits-and-exam-score-correlation">Table 1: Good Habits and Exam Score Correlation</h3>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -206,9 +252,10 @@ Circle size = strength</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><strong>Table 2: Bad Habits and Exam Score Correlation</strong></p>
+</section>
+<section id="table-2" class="slide level2">
+<h2>Table: 2</h2>
+<h3 id="table-2-bad-habits-and-exam-score-correlation">Table 2: Bad Habits and Exam Score Correlation</h3>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -239,12 +286,10 @@ Circle size = strength</li>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
 </section>
-<section id="results" class="slide level2">
-<h2>Results</h2>
+<section class="slide level2">
+
+<h3 id="results">Results</h3>
 <div class="columns">
 <ul>
 <li><strong>Study hours</strong> shows a <strong>strong positive correlation</strong> with exam scores</li>
@@ -263,20 +308,12 @@ Circle size = strength</li>
 <div class="columns">
 <ul>
 <li><strong>Social media hours</strong> and <strong>Netflix hours</strong> show only <strong>weak negative correlation</strong> with exam scores</li>
-</ul><div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="slides_files/figure-revealjs/bubble-corrplot-bad-1.png" width="960"></p>
-<figcaption><strong>Figure 2</strong>: Bubble-style correlation matrix of bad habits and exam score</figcaption>
-</figure>
-</div>
-</div>
-</div>
+</ul>
 </div>
 </section>
-<section id="conclusions-recommendations" class="slide level2">
-<h2>Conclusions &amp; recommendations</h2>
+<section class="slide level2">
+
+<h3 id="conclusions-recommendations">Conclusions &amp; recommendations</h3>
 
 </section>
     </div>
@@ -495,80 +532,42 @@ Circle size = strength</li>
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
