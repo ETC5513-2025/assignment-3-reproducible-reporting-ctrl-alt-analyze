@@ -5,11 +5,11 @@ format: revealjs
 editor: visual
 ---
 
-## Title slide
+### Title slide
 
 ------------------------------------------------------------------------
 
-## Problem introduction
+### Problem introduction
 
 -   Academic performance is affected by daily habits like:
 
@@ -27,7 +27,7 @@ editor: visual
 
 ------------------------------------------------------------------------
 
-## Dataset description
+### Dataset description
 
 -   The dataset includes **100 students** and **16 variables** covering lifestyle habits and exam performance.
 
@@ -61,9 +61,9 @@ editor: visual
 
 ------------------------------------------------------------------------
 
-## Methods
+### Methods
 
-### Analysis method
+#### Analysis method
 
 **Correlational analysis** used to test how student lifestyle habits relate to academic performance
 
@@ -116,11 +116,12 @@ data_clean <- data |>
 
 ```
 
+## Table: 1
+
 ```{r}
 #| echo: false
 #| results: asis
-#| layout-ncol: 2
-#| label: side-by-side-correlation-tables
+#| label: good-habits-correlation-table
 
 # Compute good habits correlation matrix
 good_cor_matrix <- data_clean |>
@@ -128,27 +129,34 @@ good_cor_matrix <- data_clean |>
   cor(use = "complete.obs") |>
   round(2)
 
-# Compute bad habits correlation matrix
+# Output side-by-side tables
+cat("### Table 1: Good Habits and Exam Score Correlation\n\n")
+print(kable(good_cor_matrix, digits = 2))
+
+
+```
+
+## Table: 2
+
+```{r}
+#| echo: false
+#| results: asis
+#| label: bad-habits-correlation-table
+
 bad_cor_matrix <- data_clean |>
   select(SocialMediaHours, NetflixHours, ExamScore) |>
   cor(use = "complete.obs") |>
   round(2)
 
-# Output side-by-side tables
-cat("### Table 1: Good Habits and Exam Score Correlation\n\n")
-print(kable(good_cor_matrix, digits = 2))
-
-cat("\n\n### Table 2: Bad Habits and Exam Score Correlation\n\n")
-print(kable(bad_cor_matrix, digits = 2))
-
+cat("### Table 2: Bad Habits and Exam Score Correlation\n\n")
+print(knitr::kable(bad_cor_matrix, digits = 2))
 ```
 
 ------------------------------------------------------------------------
 
-## Results
+### Results
 
 ::: columns
-
 -   **Study hours** shows a **strong positive correlation** with exam scores
 -   **Attendance rate** and **Sleep hours** show only **weak positive correlation** with exam scores
 
@@ -177,11 +185,15 @@ corrplot(
 
 ```
 :::
+
 ::: columns
 -   **Social media hours** and **Netflix hours** show only **weak negative correlation** with exam scores
+
 ```{r}
 #| label: bubble-corrplot-bad
 #| fig-cap: "**Figure 2**: Bubble-style correlation matrix of bad habits and exam score"
+
+png("data/goodhabits-corrplot.png", width = 800, height = 600)
 
 bad_bubble_corr <- data_clean |>
   dplyr::select(SocialMediaHours, NetflixHours, ExamScore) |>
@@ -212,4 +224,4 @@ corrplot(
 
 ------------------------------------------------------------------------
 
-## Conclusions & recommendations
+### Conclusions & recommendations
