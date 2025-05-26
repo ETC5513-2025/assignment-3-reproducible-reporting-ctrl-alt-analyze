@@ -19,6 +19,18 @@ editor: visual
 
 ## Methods
 
+### Analysis method
+
+**Correlational analysis** used to test how student lifestyle habits relate to academic performance
+
+### Technique
+
+-   **Pearson correlations** drawn using `cor()` in R
+-   Created **bubble-style** plots using `corrplot()` to visualise magnitude and direction of relationships
+-       <span style="color:blue">Blue</span> = Positive relationship
+-       <span style="color:red">Red</span> = Negative relationship
+-       Circle size = Relationship strength
+
 ------------------------------------------------------------------------
 
 ## Results
