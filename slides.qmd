@@ -1,7 +1,9 @@
 ---
 title: "Ctrl+Alt+Analyze"
 author: "Malika; Kunal; ZuxiLu"
-format: revealjs
+format:
+  revealjs:
+    css: styles.css
 editor: visual
 ---
 
@@ -33,13 +35,13 @@ editor: visual
 
 -   Main variables include:
 
-    -   Study hours per day\
+    -   Study hours per day
 
-    -   Class attendance (%)\
+    -   Class attendance (%)
 
-    -   Sleep hours\
+    -   Sleep hours
 
-    -   Social media hours\
+    -   Social media hours
 
     -   Netflix hours
 
@@ -158,8 +160,9 @@ print(knitr::kable(bad_cor_matrix, digits = 2))
 
 ::: columns
 -   **Study hours** shows a **strong positive correlation** with exam scores
--   **Attendance rate** and **Sleep hours** show only **weak positive correlation** with exam scores
+:::
 
+::: columns
 ```{r}
 #| label: bubble-corrplot
 #| fig-cap: "**Figure 1**: Bubble-style correlation matrix of student habits and exam score"
@@ -183,17 +186,21 @@ corrplot(
   diag = FALSE
 )
 
+
 ```
 :::
 
-::: columns
--   **Social media hours** and **Netflix hours** show only **weak negative correlation** with exam scores
+------------------------------------------------------------------------
+
+### Results Continued
+
+-   *Social media hours* and *Netflix hours* show only **weak negative correlation** with exam scores
+-   *Attendance rate* and *Sleep hours* also show only **weak positive correlation** with exam scores
 
 ```{r}
-#| label: bubble-corrplot-bad
-#| fig-cap: "**Figure 2**: Bubble-style correlation matrix of bad habits and exam score"
-
-png("data/goodhabits-corrplot.png", width = 800, height = 600)
+#| label: badhabits-corrplot
+#| fig-cap: "**Figure 2**: Bubble-style correlation matrix of student habits and exam score"
+#| echo: false
 
 bad_bubble_corr <- data_clean |>
   dplyr::select(SocialMediaHours, NetflixHours, ExamScore) |>
@@ -203,7 +210,7 @@ bad_bubble_corr <- data_clean |>
 colnames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
 rownames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
 
-par(mar = c(2, 2, 5, 2))  # Avoid clipping
+par(mar = c(6, 6, 6, 6))
 
 corrplot(
   bad_bubble_corr,
@@ -219,9 +226,17 @@ corrplot(
   number.cex = 0.8,
   diag = FALSE
 )
+
 ```
-:::
 
 ------------------------------------------------------------------------
 
-### Conclusions & recommendations
+### Conclusions & Recommendations
+
+-   **StudyHours** has a **strong positive correlation** with ExamScore (r = 0.83).
+
+-   **AttendanceRate** (r = 0.09) and **SleepHours** (r = 0.12) show **weak positive links**.
+
+-   **SocialMediaHours** and **NetflixHours** each have a **weak negative correlation** (r = -0.17) with scores.
+
+-   These results suggest **study time is the most reliable predictor** of academic success.
