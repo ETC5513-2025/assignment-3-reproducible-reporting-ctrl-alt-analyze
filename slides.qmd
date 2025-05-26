@@ -11,9 +11,53 @@ editor: visual
 
 ## Problem introduction
 
+-   Academic performance is affected by daily habits like:
+
+    -   Study hours per day, Classroom attendance, Sleep hours
+
+-   On the other hand, spending too much time on:
+
+    -   Social media, Streaming platforms like Netflix\
+        may reduce focus and study time.
+
+-   **Research Objective:**\
+    Quantify the relationship between student habits and academic performance using correlation analysis.
+
+-   We aim to discover which habits support academic success and which habits hinder it.
+
 ------------------------------------------------------------------------
 
 ## Dataset description
+
+-   The dataset includes **100 students** and **16 variables** covering lifestyle habits and exam performance.
+
+-   Main variables include:
+
+    -   Study hours per day\
+
+    -   Class attendance (%)\
+
+    -   Sleep hours\
+
+    -   Social media hours\
+
+    -   Netflix hours
+
+    -   Exam score
+
+------------------------------------------------------------------------
+
+-   Main variables are grouped into:
+
+    -   **Good habits:**\
+        `StudyHours`, `AttendanceRate`, `SleepHours`
+    -   **Bad habits:**\
+        `SocialMediaHours`, `NetflixHours`
+
+-   Target variable:\
+    `ExamScore` (numeric score for student performance)
+
+-   Data was cleaned and renamed for clarity before analysis.
 
 ------------------------------------------------------------------------
 

@@ -14,3 +14,5 @@ Add the content related to bad habits to the document.
 Add executive summary and introduction.
 
 Add slides.qmd.
+
+Add problem introduction and dataset description in slides.qmd
