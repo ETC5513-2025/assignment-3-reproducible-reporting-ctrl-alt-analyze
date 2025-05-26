@@ -63,9 +63,152 @@ editor: visual
 
 ## Methods
 
+### Analysis method
+
+**Correlational analysis** used to test how student lifestyle habits relate to academic performance
+
+### Technique
+
+-   **Pearson correlations** drawn using `cor()` in R
+-   Created **bubble-style** plots using `corrplot()` to visualize magnitude and direction of relationships [Blue]{style="color:blue"} = positive\
+    [Red]{style="color:red"} = negative\
+    Circle size = strength
+
+```{r}
+#| label: reading the data set for the first time
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(here)
+library(knitr)
+
+data <- read_csv(here("data/student_habits_performance.csv"))
+
+```
+
+```{r}
+#| label: cleaning the dataset a bit for further processing
+#| echo: false
+#| warning: false
+#| message: false
+
+data_clean <- data |>
+  rename(
+    StudentID = student_id,
+    Age = age,
+    Gender = gender,
+    StudyHours = study_hours_per_day,
+    SocialMediaHours = social_media_hours,
+    NetflixHours = netflix_hours,
+    PartTimeJob = part_time_job,
+    AttendanceRate = attendance_percentage,
+    SleepHours = sleep_hours,
+    DietQuality = diet_quality,
+    ExerciseFrequency = exercise_frequency,
+    ParentalEducation = parental_education_level,
+    InternetQuality = internet_quality,
+    MentalHealth = mental_health_rating,
+    Extracurriculars = extracurricular_participation,
+    ExamScore = exam_score
+  )
+
+```
+
+```{r}
+#| echo: false
+#| results: asis
+#| layout-ncol: 2
+#| label: side-by-side-correlation-tables
+
+# Compute good habits correlation matrix
+good_cor_matrix <- data_clean |>
+  select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
+  cor(use = "complete.obs") |>
+  round(2)
+
+# Compute bad habits correlation matrix
+bad_cor_matrix <- data_clean |>
+  select(SocialMediaHours, NetflixHours, ExamScore) |>
+  cor(use = "complete.obs") |>
+  round(2)
+
+# Output side-by-side tables
+cat("### Table 1: Good Habits and Exam Score Correlation\n\n")
+print(kable(good_cor_matrix, digits = 2))
+
+cat("\n\n### Table 2: Bad Habits and Exam Score Correlation\n\n")
+print(kable(bad_cor_matrix, digits = 2))
+
+```
+
 ------------------------------------------------------------------------
 
 ## Results
+
+::: columns
+
+-   **Study hours** shows a **strong positive correlation** with exam scores
+-   **Attendance rate** and **Sleep hours** show only **weak positive correlation** with exam scores
+
+```{r}
+#| label: bubble-corrplot
+#| fig-cap: "**Figure 1**: Bubble-style correlation matrix of student habits and exam score"
+
+library(corrplot)
+
+bubble_corr <- data_clean |>
+  dplyr::select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
+  cor(use = "complete.obs")
+
+corrplot(
+  bubble_corr,
+  method = "circle",
+  type = "lower",
+  order = "hclust",
+  tl.col = "black",
+  tl.srt = 45,
+  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
+  addCoef.col = "black",
+  number.cex = 0.9,
+  diag = FALSE
+)
+
+```
+:::
+::: columns
+-   **Social media hours** and **Netflix hours** show only **weak negative correlation** with exam scores
+```{r}
+#| label: bubble-corrplot-bad
+#| fig-cap: "**Figure 2**: Bubble-style correlation matrix of bad habits and exam score"
+
+bad_bubble_corr <- data_clean |>
+  dplyr::select(SocialMediaHours, NetflixHours, ExamScore) |>
+  cor(use = "complete.obs") |>
+  round(2)
+
+colnames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
+rownames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
+
+par(mar = c(2, 2, 5, 2))  # Avoid clipping
+
+corrplot(
+  bad_bubble_corr,
+  method = "circle",
+  type = "lower",
+  order = "original",
+  tl.col = "black",
+  tl.srt = 45,
+  tl.cex = 0.9,
+  cl.cex = 0.8,
+  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
+  addCoef.col = "black",
+  number.cex = 0.8,
+  diag = FALSE
+)
+```
+:::
 
 ------------------------------------------------------------------------
 
