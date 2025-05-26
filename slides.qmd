@@ -26,10 +26,9 @@ editor: visual
 ### Technique
 
 -   **Pearson correlations** drawn using `cor()` in R
--   Created **bubble-style** plots using `corrplot()` to visualise magnitude and direction of relationships
--       <span style="color:blue">Blue</span> = Positive relationship
--       <span style="color:red">Red</span> = Negative relationship
--       Circle size = Relationship strength
+-   Created **bubble-style** plots using `corrplot()` to visualize magnitude and direction of relationships [Blue]{style="color:blue"} = positive\
+    [Red]{style="color:red"} = negative\
+    Circle size = strength
 
 ------------------------------------------------------------------------
 
