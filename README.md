@@ -15,4 +15,4 @@ Add executive summary and introduction.
 
 Add slides.qmd.
 
-Add problem introduction and dataset description in slides.qmd
+Add introduction and dataset description in slides.qmd
