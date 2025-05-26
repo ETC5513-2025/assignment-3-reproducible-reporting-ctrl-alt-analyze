@@ -2,32 +2,49 @@
 title: "Ctrl+Alt+Analyze"
 author: "Malika; Kunal; ZuxiLu"
 format:
-  revealjs:
-    css: styles.css
+  pdf:
+    toc: true
+    number-sections: true
+    fig-cap-location: bottom
+    fontsize: 10pt
+    geometry: margin=1in
 editor: visual
 ---
 
-### Title slide
+\newpage
 
-------------------------------------------------------------------------
+### **Rebooting Student Success, One Habit at a Time**
+
+*By: Malika, Kunal, ZuxiLu*
+
+ETC5513 – Collaborative & Reproducible Practices ::: {.columns}
+
+::: {.column width="55%"}
+-   Rebooting learning through daily habits\
+-   **Ctrl** your study time, **Alt** your distractions, **Del** your doubts.
+:::
+
+::: {.column .center width="45%"}
+![Ctrl + Alt + Del your distractions for academic success](figures/CAD.png){width="80%"}
+:::
+
+\newpage
 
 ### Problem introduction
 
 -   Academic performance is affected by daily habits like:
 
-    -   Study hours per day, Classroom attendance, Sleep hours
+-   Study hours per day, Classroom attendance, Sleep hours
 
 -   On the other hand, spending too much time on:
 
-    -   Social media, Streaming platforms like Netflix\
-        may reduce focus and study time.
+-   Social media, Streaming platforms like Netflixmay reduce focus and study time.
 
--   **Research Objective:**\
-    Quantify the relationship between student habits and academic performance using correlation analysis.
+-   Research Objective:Quantify the relationship between student habits and academic performance using correlation analysis.
 
 -   We aim to discover which habits support academic success and which habits hinder it.
 
-------------------------------------------------------------------------
+\newpage
 
 ### Dataset description
 
@@ -47,7 +64,7 @@ editor: visual
 
     -   Exam score
 
-------------------------------------------------------------------------
+<!-- -->
 
 -   Main variables are grouped into:
 
@@ -61,7 +78,7 @@ editor: visual
 
 -   Data was cleaned and renamed for clarity before analysis.
 
-------------------------------------------------------------------------
+\newpage
 
 ### Methods
 
@@ -118,43 +135,41 @@ data_clean <- data |>
 
 ```
 
-## Table: 1
+
+### Table 1: Good Habits Correlation Table
 
 ```{r}
 #| echo: false
 #| results: asis
-#| label: good-habits-correlation-table
+#| warning: false
 
 # Compute good habits correlation matrix
 good_cor_matrix <- data_clean |>
   select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
   cor(use = "complete.obs") |>
   round(2)
-
-# Output side-by-side tables
-cat("### Table 1: Good Habits and Exam Score Correlation\n\n")
+# Print table 
 print(kable(good_cor_matrix, digits = 2))
-
 
 ```
 
-## Table: 2
+### Table 2:  Bad Habits Correlation Table
 
 ```{r}
 #| echo: false
 #| results: asis
 #| label: bad-habits-correlation-table
+#| warning: false
 
 bad_cor_matrix <- data_clean |>
   select(SocialMediaHours, NetflixHours, ExamScore) |>
   cor(use = "complete.obs") |>
   round(2)
-
-cat("### Table 2: Bad Habits and Exam Score Correlation\n\n")
+# Print table 
 print(knitr::kable(bad_cor_matrix, digits = 2))
 ```
 
-------------------------------------------------------------------------
+\newpage
 
 ### Results
 
@@ -165,7 +180,9 @@ print(knitr::kable(bad_cor_matrix, digits = 2))
 ::: columns
 ```{r}
 #| label: bubble-corrplot
-#| fig-cap: "**Figure 1**: Bubble-style correlation matrix of student habits and exam score"
+#| fig-cap: "Bubble-style correlation matrix of student habits and exam score"
+#| echo: false
+#| warning: false
 
 library(corrplot)
 
@@ -190,7 +207,7 @@ corrplot(
 ```
 :::
 
-------------------------------------------------------------------------
+\newpage
 
 ### Results Continued
 
@@ -199,8 +216,9 @@ corrplot(
 
 ```{r}
 #| label: badhabits-corrplot
-#| fig-cap: "**Figure 2**: Bubble-style correlation matrix of student habits and exam score"
+#| fig-cap: "Bubble-style correlation matrix of student habits and exam score"
 #| echo: false
+#| warning: false
 
 bad_bubble_corr <- data_clean |>
   dplyr::select(SocialMediaHours, NetflixHours, ExamScore) |>
@@ -229,7 +247,7 @@ corrplot(
 
 ```
 
-------------------------------------------------------------------------
+\newpage
 
 ### Conclusions & Recommendations
 
