@@ -1,17 +1,16 @@
 ---
-title: "Assignment 3 by Ctrl+Alt+Analyze "
+title: "Assignment 3 by team Ctrl+Alt+Analyze"
+author: 
+- Malaika
+- Kunal
+- ZuxiLu
 format:
-  pdf:
-    theme: lux
-    toc: true 
-    toc-depth: 2         
-    number-sections: true  
-    fig-cap-location: bottom 
-    warning: False 
-    message: False
-    code-block-bg: true 
+  quarto-monash/report-pdf:
+    toc: true
+    number-sections: true
+    linestretch: 1.5
+    keep-tex: true
 editor: visual
-fontsize: 11pt
 ---
 
 \newpage
