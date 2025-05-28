@@ -2,22 +2,22 @@
 title: "Ctrl+Alt+Analyze"
 author: "Malika; Kunal; ZuxiLu"
 format:
-  pdf:
+  revealjs:
     toc: true
     number-sections: true
     fig-cap-location: bottom
-    fontsize: 10pt
+    fontsize: 20pt
     geometry: margin=1in
 editor: visual
 ---
 
-\newpage
+---
 
 ### **Rebooting Student Success, One Habit at a Time**
 
 *By: Malika, Kunal, ZuxiLu*
 
-ETC5513 – Collaborative & Reproducible Practices ::: {.columns}
+ETC5513 -- Collaborative & Reproducible Practices ::: {.columns}
 
 ::: {.column width="55%"}
 -   Rebooting learning through daily habits\
@@ -28,7 +28,7 @@ ETC5513 – Collaborative & Reproducible Practices ::: {.columns}
 ![Ctrl + Alt + Del your distractions for academic success](figures/CAD.png){width="80%"}
 :::
 
-\newpage
+---
 
 ### Problem introduction
 
@@ -44,7 +44,7 @@ ETC5513 – Collaborative & Reproducible Practices ::: {.columns}
 
 -   We aim to discover which habits support academic success and which habits hinder it.
 
-\newpage
+---
 
 ### Dataset description
 
@@ -64,7 +64,7 @@ ETC5513 – Collaborative & Reproducible Practices ::: {.columns}
 
     -   Exam score
 
-<!-- -->
+---
 
 -   Main variables are grouped into:
 
@@ -78,7 +78,7 @@ ETC5513 – Collaborative & Reproducible Practices ::: {.columns}
 
 -   Data was cleaned and renamed for clarity before analysis.
 
-\newpage
+---
 
 ### Methods
 
@@ -135,7 +135,6 @@ data_clean <- data |>
 
 ```
 
-
 ### Table 1: Good Habits Correlation Table
 
 ```{r}
@@ -153,7 +152,7 @@ print(kable(good_cor_matrix, digits = 2))
 
 ```
 
-### Table 2:  Bad Habits Correlation Table
+### Table 2: Bad Habits Correlation Table
 
 ```{r}
 #| echo: false
@@ -169,7 +168,7 @@ bad_cor_matrix <- data_clean |>
 print(knitr::kable(bad_cor_matrix, digits = 2))
 ```
 
-\newpage
+---
 
 ### Results
 
@@ -207,7 +206,7 @@ corrplot(
 ```
 :::
 
-\newpage
+---
 
 ### Results Continued
 
@@ -247,7 +246,7 @@ corrplot(
 
 ```
 
-\newpage
+---
 
 ### Conclusions & Recommendations
 
