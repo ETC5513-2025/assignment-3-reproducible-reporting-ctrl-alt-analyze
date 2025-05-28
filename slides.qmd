@@ -48,22 +48,6 @@ ETC5513 -- Collaborative & Reproducible Practices
 
 -   The dataset includes **100 students** and **16 variables** covering lifestyle habits and exam performance.
 
--   Main variables include:
-
-    -   Study hours per day
-
-    -   Class attendance (%)
-
-    -   Sleep hours
-
-    -   Social media hours
-
-    -   Netflix hours
-
-    -   Exam score
-
----
-
 -   **Main variables are grouped into:**
 
     -   **Good habits:**\
@@ -75,22 +59,7 @@ ETC5513 -- Collaborative & Reproducible Practices
     `ExamScore` (numeric score for student performance)
 
 
--   Data was cleaned and renamed for clarity before analysis.
-
 ---
-
-### Methods
-
-**Correlational analysis** used to test how student lifestyle habits relate to academic performance
-
-### Technique
-
--   **Pearson correlations** drawn using `cor()` in R
--   Created **bubble-style** plots using `corrplot()` to visualize magnitude and direction of relationships 
-
-       [Blue]{style="color:blue"} = positive\
-       [Red]{style="color:red"} = negative\
-       Circle size = strength
 
 ```{r}
 #| label: reading the data set for the first time
@@ -134,7 +103,7 @@ data_clean <- data |>
 
 ```
 
-### Table 1: Good Habits Correlation Table
+### Table 1: Snapshot of the dataset
 
 ```{r}
 #| echo: false
@@ -142,31 +111,30 @@ data_clean <- data |>
 #| warning: false
 
 # Compute good habits correlation matrix
-good_cor_matrix <- data_clean |>
-  select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
-  cor(use = "complete.obs") |>
-  round(2)
+data_head <- data_clean |>
+  select(StudyHours, AttendanceRate, SleepHours, SocialMediaHours, NetflixHours, ExamScore) |>
+  head(3)
+
 # Print table 
-print(kable(good_cor_matrix, digits = 2))
+print(kable(data_head, digits = 2))
 
 ```
 
-### Table 2: Bad Habits Correlation Table
 
-```{r}
-#| echo: false
-#| results: asis
-#| label: bad-habits-correlation-table
-#| warning: false
+---
 
-bad_cor_matrix <- data_clean |>
-  select(SocialMediaHours, NetflixHours, ExamScore) |>
-  cor(use = "complete.obs") |>
-  round(2)
-# Print table 
-print(knitr::kable(bad_cor_matrix, digits = 2))
-```
+### Methods
 
+**Correlational analysis** used to test how student lifestyle habits relate to academic performance
+
+### Technique
+
+-   **Pearson correlations** drawn using `cor()` in R
+-   Created **bubble-style** plots using `corrplot()` to visualize magnitude and direction of relationships 
+
+       [Blue]{style="color:blue"} = positive\
+       [Red]{style="color:red"} = negative\
+       Circle size = strength
 ---
 
 ### Results
