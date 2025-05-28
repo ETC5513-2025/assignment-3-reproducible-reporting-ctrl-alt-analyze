@@ -1,6 +1,6 @@
 ---
 title: "Ctrl+Alt+Analyze"
-author: "Malika; Kunal; ZuxiLu"
+author: "Malaika; Kunal; ZuxiLu"
 format:
   revealjs:
     toc: true
@@ -15,7 +15,7 @@ editor: visual
 
 ### **Rebooting Student Success, One Habit at a Time**
 
-*By: Malika, Kunal, ZuxiLu*
+*By: Malaika, Kunal, ZuxiLu*
 
 ETC5513 -- Collaborative & Reproducible Practices ::: {.columns}
 
