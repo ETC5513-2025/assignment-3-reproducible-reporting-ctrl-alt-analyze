@@ -6,7 +6,7 @@ format:
     toc: true
     number-sections: true
     fig-cap-location: bottom
-    fontsize: 20pt
+    fontsize: 30pt
     geometry: margin=1in
 editor: visual
 ---
@@ -17,7 +17,7 @@ editor: visual
 
 *By: Malaika, Kunal, ZuxiLu*
 
-ETC5513 -- Collaborative & Reproducible Practices ::: {.columns}
+ETC5513 -- Collaborative & Reproducible Practices 
 
 ::: {.column width="55%"}
 -   Rebooting learning through daily habits\
@@ -89,9 +89,11 @@ ETC5513 -- Collaborative & Reproducible Practices ::: {.columns}
 ### Technique
 
 -   **Pearson correlations** drawn using `cor()` in R
--   Created **bubble-style** plots using `corrplot()` to visualize magnitude and direction of relationships [Blue]{style="color:blue"} = positive\
-    [Red]{style="color:red"} = negative\
-    Circle size = strength
+-   Created **bubble-style** plots using `corrplot()` to visualize magnitude and direction of relationships 
+
+       [Blue]{style="color:blue"} = positive\
+       [Red]{style="color:red"} = negative\
+       Circle size = strength
 
 ```{r}
 #| label: reading the data set for the first time
