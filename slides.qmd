@@ -13,7 +13,7 @@ editor: visual
 
 ---
 
-### **Rebooting Student Success, One Habit at a Time**
+### Rebooting Student Success, One Habit at a Time
 
 *By: Malaika, Kunal, ZuxiLu*
 
@@ -32,17 +32,15 @@ ETC5513 -- Collaborative & Reproducible Practices
 
 ### Problem introduction
 
--   Academic performance is affected by daily habits like:
+- **Academic performance is shaped by daily habits:**
+  -  *Good habits:* Study hours, classroom attendance, sleep quality
+  -  *Disruptive habits:* Social media, Netflix/streaming overuse
 
--   Study hours per day, Classroom attendance, Sleep hours
+- **Research Objective:**
+  >  *Quantify the relationship between student lifestyle habits and academic performance*
 
--   On the other hand, spending too much time on:
-
--   Social media, Streaming platforms like Netflixmay reduce focus and study time.
-
--   Research Objective:Quantify the relationship between student habits and academic performance using correlation analysis.
-
--   We aim to discover which habits support academic success and which habits hinder it.
+- **Goal:**
+  - Identify habits that **boost** vs. **hinder** academic success
 
 ---
 
@@ -66,23 +64,22 @@ ETC5513 -- Collaborative & Reproducible Practices
 
 ---
 
--   Main variables are grouped into:
+-   **Main variables are grouped into:**
 
     -   **Good habits:**\
         `StudyHours`, `AttendanceRate`, `SleepHours`
     -   **Bad habits:**\
         `SocialMediaHours`, `NetflixHours`
 
--   Target variable:\
+-   **Target variable:**\
     `ExamScore` (numeric score for student performance)
+
 
 -   Data was cleaned and renamed for clarity before analysis.
 
 ---
 
 ### Methods
-
-#### Analysis method
 
 **Correlational analysis** used to test how student lifestyle habits relate to academic performance
 
