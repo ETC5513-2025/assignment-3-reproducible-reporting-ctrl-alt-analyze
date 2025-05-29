@@ -3,7 +3,7 @@ title: "Ctrl+Alt+Analyze"
 author: "Malaika; Kunal; ZuxiLu"
 format:
   revealjs:
-    theme: solarized
+    theme: serif
     toc: true
     number-sections: true
     fig-cap-location: bottom
@@ -38,7 +38,7 @@ ETC5513 -- Collaborative & Reproducible Practices
     -   *Good habits:* Study hours, classroom attendance, sleep quality
     -   *Disruptive habits:* Social media, Netflix/streaming overuse
 
--   **Research Objective:** \> *Quantify the relationship between student lifestyle habits and academic performance*
+-   **Research Objective:** *Quantify the relationship between student lifestyle habits and academic performance*
 
 -   **Goal:**
 
@@ -137,7 +137,9 @@ kable(data_head, digits = 2, caption = "Table 1: Snapshot of the Dataset") |>
 
     [Blue]{style="color:blue"} = positive\
     [Red]{style="color:red"} = negative\
-    Circle size = strength ---
+    Circle size = strength 
+    
+---
 
 ### Results
 
