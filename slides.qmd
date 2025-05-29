@@ -229,4 +229,4 @@ corrplot(
 
 📱 Social media & 📺 Netflix hurt — but not much
 
-🎯 Focus on study time — it’s the best predicto
+🎯 Focus on study time — it’s the best predictor
