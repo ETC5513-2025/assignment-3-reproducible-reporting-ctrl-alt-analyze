@@ -6,7 +6,7 @@
 <script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Malaika; Kunal; ZuxiLu">
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-8a777399fb1857e3d913ad95c7a0c0b1.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-e7f4878d4eae9e7a2b47e1f03cd5c51b.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -121,8 +121,12 @@
       margin-right: 0; 
     }
   </style>
+  <script src="slides_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+  <link href="slides_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -161,9 +165,6 @@ Malaika; Kunal; ZuxiLu
 <ul>
 <li><a href="#/methods" id="/toc-methods"><span class="header-section-number">0.5</span> Methods</a></li>
 <li><a href="#/technique" id="/toc-technique"><span class="header-section-number">0.6</span> Technique</a></li>
-</ul></li>
-<li>
-<ul>
 <li><a href="#/results" id="/toc-results"><span class="header-section-number">0.7</span> Results</a></li>
 </ul></li>
 <li>
@@ -216,7 +217,7 @@ Malaika; Kunal; ZuxiLu
 
 <h3 data-number="0.3" id="dataset-description"><span class="header-section-number">0.3</span> Dataset description</h3>
 <ul>
-<li><p>The dataset includes <strong>100 students</strong> and <strong>16 variables</strong> covering lifestyle habits and exam performance.</p></li>
+<li><p>The dataset includes <strong>1000 students</strong> and <strong>16 variables</strong> covering lifestyle habits and exam performance.</p></li>
 <li><p><strong>Main variables are grouped into:</strong></p>
 <ul>
 <li><strong>Good habits:</strong><br>
@@ -231,23 +232,16 @@ Malaika; Kunal; ZuxiLu
 <section class="slide level2">
 
 <h3 data-number="0.4" id="table-1-snapshot-of-the-dataset"><span class="header-section-number">0.4</span> Table 1: Snapshot of the dataset</h3>
-<table class="caption-top">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 19%">
-<col style="width: 14%">
-<col style="width: 22%">
-<col style="width: 16%">
-<col style="width: 12%">
-</colgroup>
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table 1: Snapshot of the Dataset</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">StudyHours</th>
-<th style="text-align: right;">AttendanceRate</th>
-<th style="text-align: right;">SleepHours</th>
-<th style="text-align: right;">SocialMediaHours</th>
-<th style="text-align: right;">NetflixHours</th>
-<th style="text-align: right;">ExamScore</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">StudyHours</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AttendanceRate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">SleepHours</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">SocialMediaHours</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">NetflixHours</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ExamScore</th>
 </tr>
 </thead>
 <tbody>
@@ -277,6 +271,8 @@ Malaika; Kunal; ZuxiLu
 </tr>
 </tbody>
 </table>
+
+
 </section>
 <section class="slide level2">
 
@@ -288,11 +284,8 @@ Malaika; Kunal; ZuxiLu
 <li><p>Created <strong>bubble-style</strong> plots using <code>corrplot()</code> to visualize magnitude and direction of relationships</p>
 <p><span style="color:blue">Blue</span> = positive<br>
 <span style="color:red">Red</span> = negative<br>
-Circle size = strength</p></li>
+Circle size = strength —</p></li>
 </ul>
-</section>
-<section class="slide level2">
-
 <h3 data-number="0.7" id="results"><span class="header-section-number">0.7</span> Results</h3>
 <div class="columns">
 <ul>
