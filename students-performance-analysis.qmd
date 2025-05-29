@@ -101,6 +101,7 @@ Academic performance is influenced by a range of behavioral and lifestyle factor
 ```{r}
 #| echo: false
 #| warning: false
+#| label: tbl-correlation
 #| tbl-cap: "Correlation matrix of good habits and exam score"
 library(knitr)
 kable(good_cor_matrix, digits = 2)
@@ -120,12 +121,12 @@ Before analysis, variables were renamed for clarity (e.g., `study_hours_per_day`
 
 \newpage
 
-Figure **1** below illustrates the correlation among good habits and exam score. Circle size and color represent the strength and direction of correlation, with stronger positive values shown in blue and negative in red.
+@fig-blue below illustrates the correlation among good habits and exam score. Circle size and color represent the strength and direction of correlation, with stronger positive values shown in blue and negative in red.
 
 ```{r}
 #| echo: false
 #| warning: false
-#| label: Correlation among habits
+#| label: fig-blue
 #| fig-cap: 'Blue = positive, red = negative, size shows strength'
 
 good_corr <- data_clean |>
@@ -156,7 +157,7 @@ corrplot(
 
 # Investigating 'good' habits'
 
--   The chart shows how three good habits relate to student exam scores:
+-   @fig-bubble shows how three good habits relate to student exam scores:
 
     -   StudyHours, AttendanceRate, and SleepHours.
 
@@ -173,7 +174,7 @@ corrplot(
 ```{r}
 #| echo: false
 #| warning: false
-#| label: bubble-corrplot
+#| label: fig-bubble
 #| fig-cap: "Bubble-style correlation matrix of student habits and exam score"
 #| fig-width: 5.5
 #| fig-height: 4.3
@@ -203,7 +204,7 @@ corrplot(
 
 # Investigating 'bad' habits'
 
--   The chart shows how two bad habits relate to exam performance:
+-   @fig-bubble-style how two bad habits relate to exam performance:
 
     -   SocialMediaHours and NetflixHours.
 
@@ -220,7 +221,7 @@ corrplot(
 ```{r}
 #| echo: false
 #| warning: false
-#| label: bubble-corrplot-bad
+#| label: fig-bubble-style
 #| fig-cap: "Bubble-style correlation matrix of bad habits and exam score"
 
 library(corrplot)
@@ -254,7 +255,7 @@ corrplot(
 
 The table below summarizes how each lifestyle habit correlates with academic performance.
 
-**Table 1** shows that `StudyHours` has a strong positive relationship with `ExamScore` (r = 0.83), making it the most significant factor influencing academic success. `AttendanceRate` (r = 0.09) and `SleepHours` (r = 0.12) show weak positive associations, suggesting minor contributions.
+@tbl-relationship shows that `StudyHours` has a strong positive relationship with `ExamScore` (r = 0.83), making it the most significant factor influencing academic success. `AttendanceRate` (r = 0.09) and `SleepHours` (r = 0.12) show weak positive associations, suggesting minor contributions.
 
 In contrast, both `SocialMediaHours` and `NetflixHours` have weak negative correlations with exam scores (r = -0.17 each), indicating that increased screen time may slightly reduce performance. However, the strength of these negative relationships is modest and not highly predictive on their own.
 
@@ -263,7 +264,9 @@ Overall, the results emphasize that consistent study habits are the most importa
 ```{r}
 #| echo: false
 #| warning: false
-#| 
+#| label: tbl-relationship
+#| tbl-cap: "Relationship between lifestyle habits and academic performance"
+
 # Select all habits of interest
 combined_corr <- data_clean |>
   select(StudyHours, AttendanceRate, SleepHours, SocialMediaHours, NetflixHours, ExamScore) |>
