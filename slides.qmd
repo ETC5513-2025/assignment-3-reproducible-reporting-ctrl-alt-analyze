@@ -116,10 +116,10 @@ library(kableExtra)
 
 data_head <- data_clean |>
   select(StudyHours, AttendanceRate, SleepHours, SocialMediaHours, NetflixHours, ExamScore) |>
-  head(3)
+  head(7)
 
 kable(data_head, digits = 2, caption = "Table 1: Snapshot of the Dataset") |>
-  kable_styling(font_size = 16, full_width = FALSE, position = "center")
+  kable_styling(font_size = 27, full_width = FALSE, position = "center")
 
 ```
 
