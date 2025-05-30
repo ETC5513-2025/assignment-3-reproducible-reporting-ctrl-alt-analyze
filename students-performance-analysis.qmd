@@ -101,7 +101,6 @@ Academic performance is influenced by a range of behavioral and lifestyle factor
 ```{r}
 #| echo: false
 #| warning: false
-#| label: tbl-correlation
 #| tbl-cap: "Correlation matrix of good habits and exam score"
 library(knitr)
 kable(good_cor_matrix, digits = 2)
@@ -111,55 +110,46 @@ This study used correlation analysis to explore the relationship between student
 
 We categorized the variables into two groups:
 
-1.  **Good habits**: `StudyHours`, `AttendanceRate`, `SleepHours`
+-   **Good habits:** StudyHours, AttendanceRate, SleepHours
 
-2.  **Bad habits**: `SocialMediaHours`, `NetflixHours`
+-   **Bad habits:** SocialMediaHours, NetflixHours
 
-Our target variable for academic performance was `ExamScore`. To analyze relationships, we calculated Pearson correlation coefficients between each habit variable and `ExamScore`. This approach allowed us to assess the strength and direction of the linear relationship between variables.
+Our target variable for academic performance was ExamScore. To analyze relationships, we calculated Pearson correlation coefficients between each habit variable and ExamScore. This approach allowed us to assess the strength and direction of the linear relationship between variables.
 
-Before analysis, variables were renamed for clarity (e.g., `study_hours_per_day` → `StudyHours`). Only complete cases were used to ensure accuracy. A correlation matrix was computed using `cor()` in R, and visualized using a bubble-style correlation plot to enhance interpretability.
+Before analysis, variables were renamed for clarity (e.g., study_hours_per_day → StudyHours). Only complete cases were used to ensure accuracy. A correlation matrix was computed using cor() in R, and visualized using **color-coded bar plots** to enhance interpretability. Each bar displays the strength and direction of correlation between a habit and exam performance. We also introduced an Impact label that classifies habits as either **“Helps”** or **“Hurts”** academic outcomes, based on whether their correlation with exam scores is positive or negative.
 
 \newpage
 
-@fig-blue below illustrates the correlation among good habits and exam score. Circle size and color represent the strength and direction of correlation, with stronger positive values shown in blue and negative in red.
+Figure 1 shows a bar plot of how good and bad habits correlate with exam scores. Bars are color-coded to indicate positive (“Helps”) or negative (“Hurts”) impact.
 
 ```{r}
-#| echo: false
-#| warning: false
-#| label: fig-blue
-#| fig-cap: 'Blue = positive, red = negative, size shows strength'
+library(ggplot2)
 
-good_corr <- data_clean |>
-  select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
-  cor(use = "complete.obs") |>
-  round(2)
+# Select relevant variables
+vars <- c("StudyHours", "AttendanceRate", "SleepHours", "SocialMediaHours", "NetflixHours")
 
-colnames(good_corr) <- c("Study", "Attend", "Sleep", "Score")
-rownames(good_corr) <- colnames(good_corr)
+# Compute correlations with ExamScore
+correlations <- sapply(data_clean[, vars], function(x) cor(x, data_clean$ExamScore, use = "complete.obs"))
 
-par(mar = c(2, 2, 5, 2))  # Prevent label clipping
+# Create a data frame
+corr_df <- data.frame(Variable = vars, Correlation = correlations)
 
-corrplot(
-  good_corr,
-  method = "circle",
-  type = "lower",
-  order = "original",
-  tl.col = "black",
-  tl.srt = 45,
-  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
-  addCoef.col = "black",
-  number.cex = 0.8,
-  diag = FALSE
-)
+# Plot
+ggplot(corr_df, aes(x = reorder(Variable, Correlation), y = Correlation, fill = Correlation)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_fill_gradient2(low = "red", high = "blue", mid = "white",
+                       midpoint = 0, limit = c(-1,1), space = "Lab",
+                       name="Correlation") +
+  theme_minimal() +
+  labs(title = "Correlation with Exam Score", x = "", y = "Correlation Coefficient")
 ```
 
 \newpage
 
 # Investigating 'good' habits'
 
--   @fig-bubble shows how three good habits relate to student exam scores:
-
-    -   StudyHours, AttendanceRate, and SleepHours.
+-   Figure 2 summarizes how StudyHours, AttendanceRate, and SleepHours relate to exam scores using a labeled bar plot.
 
 -   **StudyHours** has a **strong positive correlation** with ExamScore (r = 0.83).
 
@@ -171,40 +161,66 @@ corrplot(
 
 -   **Conclusion:** Among the good habits, **studying regularly** is clearly the most effective for better academic performance.
 
+-   use @fig-correlation-bar-plot
+
 ```{r}
+#| label: fig-correlation-bar-plot
+#| fig-cap: "How Habits Correlate with Exam Performance"
 #| echo: false
 #| warning: false
-#| label: fig-bubble
-#| fig-cap: "Bubble-style correlation matrix of student habits and exam score"
-#| fig-width: 5.5
-#| fig-height: 4.3
+#| message: false
 
-# Compute correlation matrix using proper column names
-bubble_corr <- data_clean |>
-  select(StudyHours, AttendanceRate, SleepHours, ExamScore) |>
-  cor(use = "complete.obs")
+library(tidyverse)
 
-# Bubble matrix plot with enhanced aesthetics
-corrplot(
-  bubble_corr,
-  method = "circle",
-  type = "lower",
-  order = "hclust",
-  tl.col = "black",
-  tl.srt = 45,
-  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
-  addCoef.col = "black",
-  number.cex = 0.9,
-  diag = FALSE
-)
+# Calculate correlations
+cor_vals <- data_clean |>
+  select(StudyHours, AttendanceRate, SleepHours, SocialMediaHours, NetflixHours, ExamScore) |>
+  cor(use = "complete.obs") |>
+  round(2)
 
+# Prepare dataframe
+cor_df <- tibble(
+  Habit = c("Study", "Attendance", "Sleep", "Social", "Netflix"),
+  Correlation = c(cor_vals["ExamScore", "StudyHours"],
+                  cor_vals["ExamScore", "AttendanceRate"],
+                  cor_vals["ExamScore", "SleepHours"],
+                  cor_vals["ExamScore", "SocialMediaHours"],
+                  cor_vals["ExamScore", "NetflixHours"])
+) |>
+  mutate(
+    Impact = ifelse(Correlation >= 0, "Helps", "Hurts"),
+    LabelPos = ifelse(Correlation >= 0, Correlation - 0.05, Correlation + 0.05)  # for placement
+  )
+
+# Bar plot with clear labels
+ggplot(cor_df, aes(x = Habit, y = Correlation, fill = Impact)) +
+  geom_col() +
+  geom_text(
+    aes(label = Correlation, y = LabelPos),
+    color = "white",
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("Helps" = "dodgerblue", "Hurts" = "firebrick")) +
+  coord_cartesian(ylim = c(-0.25, 1)) +
+  labs(
+    x = "Student Habit",
+    y = "Correlation with Exam Score (r)",
+    fill = "Impact",
+    title = "How Habits Correlate with Exam Performance"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold", size = 16)
+  )
 ```
 
 \newpage
 
 # Investigating 'bad' habits'
 
--   @fig-bubble-style how two bad habits relate to exam performance:
+-   The chart shows how two bad habits relate to exam performance:
 
     -   SocialMediaHours and NetflixHours.
 
@@ -219,53 +235,76 @@ corrplot(
 -   **Conclusion:** These habits may slightly harm performance, but the effect is **not strong** or highly predictive.
 
 ```{r}
+#| label: fig-bad-habits-barplot
+#| fig-cap: "How Bad Habits Correlate with Exam Performance"
 #| echo: false
 #| warning: false
-#| label: fig-bubble-style
-#| fig-cap: "Bubble-style correlation matrix of bad habits and exam score"
+#| message: false
+#| fig-width: 6
+#| fig-height: 4.5
 
-library(corrplot)
+library(tidyverse)
 
-bad_bubble_corr <- data_clean |>
+# Extract correlations with ExamScore for bad habits
+bad_corr_vals <- data_clean |>
   select(SocialMediaHours, NetflixHours, ExamScore) |>
-  cor(use = "complete.obs")
+  cor(use = "complete.obs") |>
+  round(2)
 
-colnames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
-rownames(bad_bubble_corr) <- c("Social", "Netflix", "Score")
+# Build tidy dataframe
+bad_df <- tibble(
+  Habit = c("Social", "Netflix"),
+  Correlation = c(
+    bad_corr_vals["ExamScore", "SocialMediaHours"],
+    bad_corr_vals["ExamScore", "NetflixHours"]
+  )
+) |>
+  mutate(
+    Impact = ifelse(Correlation >= 0, "Helps", "Hurts"),
+    LabelPos = ifelse(Correlation >= 0, Correlation - 0.03, Correlation + 0.03)
+  )
 
-par(mar = c(5, 5, 5, 5))  # spacing
-
-corrplot(
-  bad_bubble_corr,
-  method = "circle",
-  type = "lower",
-  order = "hclust",
-  tl.col = "black",
-  tl.srt = 45,
-  col = colorRampPalette(c("#d73027", "white", "#1E90FF"))(200),
-  addCoef.col = "black",
-  number.cex = 0.9,
-  diag = FALSE
-)
+# Simple bar plot
+ggplot(bad_df, aes(x = Habit, y = Correlation, fill = Impact)) +
+  geom_col(width = 0.6) +
+  geom_text(
+    aes(label = Correlation, y = LabelPos),
+    color = "white",
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("Helps" = "dodgerblue", "Hurts" = "firebrick")) +
+  coord_cartesian(ylim = c(-0.25, 0.05)) +
+  labs(
+    x = "Bad Habit",
+    y = "Correlation with Exam Score",
+    fill = "Impact"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold", size = 16)
+  )
 ```
 
 \newpage
 
 # Results:
 
-The table below summarizes how each lifestyle habit correlates with academic performance.
+The bar plots and @tbl-good-habits-correlation summarize how each lifestyle habit correlates with academic performance. The colors in the plots indicate whether a habit *helps* (positive correlation) or *hurts* (negative correlation) exam scores.
 
-@tbl-relationship shows that `StudyHours` has a strong positive relationship with `ExamScore` (r = 0.83), making it the most significant factor influencing academic success. `AttendanceRate` (r = 0.09) and `SleepHours` (r = 0.12) show weak positive associations, suggesting minor contributions.
+StudyHours shows the strongest positive relationship with ExamScore (r = 0.83), reinforcing its importance for academic success. AttendanceRate (r = 0.09) and SleepHours (r = 0.12) show minor positive associations.
 
-In contrast, both `SocialMediaHours` and `NetflixHours` have weak negative correlations with exam scores (r = -0.17 each), indicating that increased screen time may slightly reduce performance. However, the strength of these negative relationships is modest and not highly predictive on their own.
+On the other hand, both SocialMediaHours and NetflixHours have weak negative correlations with ExamScore (r = -0.17 each), suggesting these habits may slightly hinder performance.
 
-Overall, the results emphasize that consistent study habits are the most important contributor to higher academic performance, while excessive media consumption may act as a mild deterrent.
+These patterns are visualized clearly through labeled bar plots, making it easier to interpret the influence of each habit on academic performance.
 
 ```{r}
+#| label: tbl-good-habits-correlation
+#| tbl-cap: "Correlation with Exam Score for Each Habit"
 #| echo: false
 #| warning: false
-#| label: tbl-relationship
-#| tbl-cap: "Relationship between lifestyle habits and academic performance"
+#| message: false
 
 # Select all habits of interest
 combined_corr <- data_clean |>
@@ -286,13 +325,15 @@ kable(score_corr)
 
 # Discussion, Conclusion and Recommendations:
 
--   The findings from this analysis reinforce a key academic principle: consistent study habits have the strongest impact on student performance. Among all the lifestyle factors examined, `StudyHours` had a clear and substantial correlation with `ExamScore`, while other good habits like `AttendanceRate` and `SleepHours` played minor roles.
+-   The findings from this analysis reinforce a key academic insight: consistent study habits have the strongest influence on student performance. Among all habits examined, StudyHours had the clearest and most substantial correlation with ExamScore (r = 0.83).
 
--   On the other hand, bad habits such as time spent on social media and Netflix showed weak negative correlations with academic performance. Although these habits may slightly affect scores, they are not as influential as focused study time. This suggests that managing distractions is helpful, but not sufficient without active effort toward academic preparation.
+-   The updated bar plots simplify interpretation by highlighting which habits help or hurt academic performance. Habits like AttendanceRate and SleepHours offered minor positive impacts, while SocialMediaHours and NetflixHours showed weak negative correlations.
 
--   From a practical perspective, students should prioritise building regular study routines, as this habit alone appears to yield the most significant academic benefit. Digital distractions should be monitored and managed, but not overly blamed for performance gaps without considering time spent studying.
+-   Introducing the "Impact" category (Helps/Hurts) made these trends easier to communicate visually, improving accessibility for all readers. While digital distractions like social media and Netflix usage may slightly reduce exam performance, they are not as significant as maintaining regular study routines.
 
--   Future research could explore how motivation, learning environment, or time management interact with these habits. Additionally, collecting longitudinal data could help identify whether these correlations hold consistently over time or vary by context.
+-   Practically, students should focus on strengthening study habits while being mindful of time spent on digital entertainment. These recommendations are supported by clear visual evidence and measurable correlations.
+
+-   Future studies could explore whether these relationships hold in larger or more diverse samples, or how other variables such as motivation or time management interact with these habits.
 
 # References
 
