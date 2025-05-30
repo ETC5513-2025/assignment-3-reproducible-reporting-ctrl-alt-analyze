@@ -101,6 +101,7 @@ Academic performance is influenced by a range of behavioral and lifestyle factor
 ```{r}
 #| echo: false
 #| warning: false
+#| label: tbl-correlation
 #| tbl-cap: "Correlation matrix of good habits and exam score"
 library(knitr)
 kable(good_cor_matrix, digits = 2)
@@ -120,9 +121,13 @@ Before analysis, variables were renamed for clarity (e.g., study_hours_per_day �
 
 \newpage
 
-Figure 1 shows a bar plot of how good and bad habits correlate with exam scores. Bars are color-coded to indicate positive (“Helps”) or negative (“Hurts”) impact.
+@fig-correlation-with-exam-score shows a bar plot of how good and bad habits correlate with exam scores. Bars are color-coded to indicate positive (“Helps”) or negative (“Hurts”) impact.
 
 ```{r}
+#| echo: false
+#| warning: false
+#| label: fig-correlation-with-exam-score
+#| fig-cap: "Correlation with exam score"
 library(ggplot2)
 
 # Select relevant variables
@@ -149,7 +154,7 @@ ggplot(corr_df, aes(x = reorder(Variable, Correlation), y = Correlation, fill = 
 
 # Investigating 'good' habits'
 
--   Figure 2 summarizes how StudyHours, AttendanceRate, and SleepHours relate to exam scores using a labeled bar plot.
+-   @fig-how summarizes how StudyHours, AttendanceRate, and SleepHours relate to exam scores using a labeled bar plot.
 
 -   **StudyHours** has a **strong positive correlation** with ExamScore (r = 0.83).
 
@@ -161,10 +166,10 @@ ggplot(corr_df, aes(x = reorder(Variable, Correlation), y = Correlation, fill = 
 
 -   **Conclusion:** Among the good habits, **studying regularly** is clearly the most effective for better academic performance.
 
--   use @fig-correlation-bar-plot
+-   use @fig-how
 
 ```{r}
-#| label: fig-correlation-bar-plot
+#| label: fig-how
 #| fig-cap: "How Habits Correlate with Exam Performance"
 #| echo: false
 #| warning: false
@@ -220,7 +225,7 @@ ggplot(cor_df, aes(x = Habit, y = Correlation, fill = Impact)) +
 
 # Investigating 'bad' habits'
 
--   The chart shows how two bad habits relate to exam performance:
+-   @fig-how-bad shows how two bad habits relate to exam performance:
 
     -   SocialMediaHours and NetflixHours.
 
@@ -228,14 +233,10 @@ ggplot(cor_df, aes(x = Habit, y = Correlation, fill = Impact)) +
 
     -   More time spent on these may slightly lower scores.
 
--   The two habits are **not correlated with each other** (r = 0.01).
-
-    -   Social media and Netflix usage appear to be independent.
-
 -   **Conclusion:** These habits may slightly harm performance, but the effect is **not strong** or highly predictive.
 
 ```{r}
-#| label: fig-bad-habits-barplot
+#| label: fig-how-bad
 #| fig-cap: "How Bad Habits Correlate with Exam Performance"
 #| echo: false
 #| warning: false
@@ -291,7 +292,7 @@ ggplot(bad_df, aes(x = Habit, y = Correlation, fill = Impact)) +
 
 # Results:
 
-The bar plots and @tbl-good-habits-correlation summarize how each lifestyle habit correlates with academic performance. The colors in the plots indicate whether a habit *helps* (positive correlation) or *hurts* (negative correlation) exam scores.
+The bar plots and @tbl-correlation-with-exam-score-for-each-habit shows how each lifestyle habit correlates with academic performance. The colors in the plots indicate whether a habit *helps* (positive correlation) or *hurts* (negative correlation) exam scores.
 
 StudyHours shows the strongest positive relationship with ExamScore (r = 0.83), reinforcing its importance for academic success. AttendanceRate (r = 0.09) and SleepHours (r = 0.12) show minor positive associations.
 
@@ -300,7 +301,7 @@ On the other hand, both SocialMediaHours and NetflixHours have weak negative cor
 These patterns are visualized clearly through labeled bar plots, making it easier to interpret the influence of each habit on academic performance.
 
 ```{r}
-#| label: tbl-good-habits-correlation
+#| label: tbl-correlation-with-exam-score-for-each-habit
 #| tbl-cap: "Correlation with Exam Score for Each Habit"
 #| echo: false
 #| warning: false
