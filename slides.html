@@ -9,7 +9,7 @@
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <meta name="author" content="Malaika; Kunal; ZuxiLu">
+  <meta name="author" content="Malika; Kunal; ZuxiLu">
   <title>Ctrl+Alt+Analyze</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,7 +29,8 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-61d508c6bb450421298db015156440d2.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-8f3eebe07241f08526c91a7e9cbef8fd.css">
+  <link rel="stylesheet" href="style.scss">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -122,9 +123,7 @@
     }
   </style>
   <script src="slides_files/libs/kePrint-0.0.1/kePrint.js"></script>
-
   <link href="slides_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -136,190 +135,256 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Malaika; Kunal; ZuxiLu 
+Malika; Kunal; ZuxiLu 
 </div>
 </div>
 </div>
 
 </section>
-<section class="slide level2">
-
-<h3 data-number="0.1" id="rebooting-student-success-one-habit-at-a-time"><span class="header-section-number">0.1</span> Rebooting Student Success, One Habit at a Time</h3>
-<p><em>By: Malaika, Kunal, ZuxiLu</em></p>
-<p>ETC5513 – Collaborative &amp; Reproducible Practices</p>
-<div class="column" style="width:55%;">
+<section id="rebooting-student-success-one-habit-at-a-time" class="slide level2">
+<h2>Rebooting Student Success, One Habit at a Time</h2>
+<p><em>By: Malika, Kunal, ZuxiLu</em><br>
+ETC5513 – Collaborative &amp; Reproducible Practices</p>
 <ul>
 <li>Rebooting learning through daily habits<br>
 </li>
 <li><strong>Ctrl</strong> your study time, <strong>Alt</strong> your distractions, <strong>Del</strong> your doubts.</li>
 </ul>
-</div><div class="column center" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/CAD.png" style="width:80.0%"></p>
-<figcaption>Ctrl + Alt + Del your distractions for academic success</figcaption>
-</figure>
-</div>
-</div></section>
-<section class="slide level2">
-
-<h3 data-number="0.2" id="problem-introduction"><span class="header-section-number">0.2</span> Problem introduction</h3>
+</section>
+<section id="problem-introduction" class="slide level2">
+<h2>Problem introduction</h2>
 <ul>
-<li><p><strong>Academic performance is shaped by daily habits:</strong></p>
+<li><p>Academic performance is affected by daily habits like:</p></li>
+<li><p>Study hours per day, Classroom attendance, Sleep hours</p></li>
+<li><p>On the other hand, spending too much time on:</p></li>
+<li><p>Social media, Streaming platforms like Netflix may reduce focus and study time.</p></li>
+</ul>
+</section>
+<section id="research-objective" class="slide level2">
+<h2>Research Objective:</h2>
+<p>Quantify the relationship between student habits and academic performance using correlation analysis.</p>
 <ul>
-<li><em>Good habits:</em> Study hours, classroom attendance, sleep quality</li>
-<li><em>Disruptive habits:</em> Social media, Netflix/streaming overuse</li>
-</ul></li>
-<li><p><strong>Research Objective:</strong> <em>Quantify the relationship between student lifestyle habits and academic performance</em></p></li>
-<li><p><strong>Goal:</strong></p>
+<li>We aim to discover which habits support academic success and which habits hinder it.</li>
+</ul>
+</section>
+<section id="dataset-description" class="slide level2">
+<h2>Dataset description</h2>
 <ul>
-<li>Identify habits that <strong>boost</strong> vs.&nbsp;<strong>hinder</strong> academic success</li>
+<li><p>The dataset includes <strong>100 students</strong> and <strong>16 variables</strong> covering lifestyle habits and exam performance.</p></li>
+<li><p>Main variables include:</p>
+<ul>
+<li><p>Study hours per day</p></li>
+<li><p>Class attendance (%)</p></li>
+<li><p>Sleep hours</p></li>
+<li><p>Social media hours</p></li>
+<li><p>Netflix hours</p></li>
+<li><p>Exam score</p></li>
 </ul></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<h3 data-number="0.3" id="dataset-description"><span class="header-section-number">0.3</span> Dataset description</h3>
+<section id="main-variables-are-grouped-into" class="slide level2">
+<h2>Main variables are grouped into:</h2>
 <ul>
-<li><p>The dataset includes <strong>1000 students</strong> and <strong>16 variables</strong> covering lifestyle habits and exam performance.</p></li>
-<li><p><strong>Main variables are grouped into:</strong></p>
+<li><p><strong>Good habits:</strong><br>
+<code>StudyHours</code>, <code>AttendanceRate</code>, <code>SleepHours</code></p></li>
+<li><p><strong>Bad habits:</strong><br>
+<code>SocialMediaHours</code>, <code>NetflixHours</code></p></li>
+<li><p>Target variable:</p>
 <ul>
-<li><strong>Good habits:</strong><br>
-<code>StudyHours</code>, <code>AttendanceRate</code>, <code>SleepHours</code></li>
-<li><strong>Bad habits:</strong><br>
-<code>SocialMediaHours</code>, <code>NetflixHours</code></li>
+<li><code>ExamScore</code> (numeric score for student performance)</li>
 </ul></li>
-<li><p><strong>Target variable:</strong><br>
-<code>ExamScore</code> (numeric score for student performance)</p></li>
+<li><p>Data was cleaned and renamed for clarity before analysis.</p></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<h3 data-number="0.4" id="table-1-snapshot-of-the-dataset"><span class="header-section-number">0.4</span> Table 1: Snapshot of the dataset</h3>
-<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 27px; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Table 1: Snapshot of the Dataset</caption>
+<section id="analysis-method" class="slide level2">
+<h2>Analysis method</h2>
+<p><strong>Correlational analysis</strong> used to test how student lifestyle habits relate to academic performance</p>
+<h3 id="technique">Technique</h3>
+<ul>
+<li><strong>Pearson correlations</strong> drawn using <code>cor()</code> in R</li>
+<li>Created <strong>bubble-style</strong> plots using <code>corrplot()</code> to visualize magnitude and direction of relationships <span style="color:blue">Blue</span> = positive<br>
+<span style="color:red">Red</span> = negative<br>
+Circle size = strength</li>
+</ul>
+</section>
+<section id="table-1-good-habits-correlation-table" class="title-slide slide level1 center">
+<h1>Table 1: Good Habits Correlation Table</h1>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">StudyHours</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">AttendanceRate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">SleepHours</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">SocialMediaHours</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">NetflixHours</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">ExamScore</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">StudyHours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">AttendanceRate</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">SleepHours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">ExamScore</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">85.0</td>
-<td style="text-align: right;">8.0</td>
-<td style="text-align: right;">1.2</td>
-<td style="text-align: right;">1.1</td>
-<td style="text-align: right;">56.2</td>
+<td style="text-align: left;">StudyHours</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">0.83</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">6.9</td>
-<td style="text-align: right;">97.3</td>
-<td style="text-align: right;">4.6</td>
-<td style="text-align: right;">2.8</td>
-<td style="text-align: right;">2.3</td>
-<td style="text-align: right;">100.0</td>
+<td style="text-align: left;">AttendanceRate</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.09</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">94.8</td>
-<td style="text-align: right;">8.0</td>
-<td style="text-align: right;">3.1</td>
-<td style="text-align: right;">1.3</td>
-<td style="text-align: right;">34.3</td>
+<td style="text-align: left;">SleepHours</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.12</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">71.0</td>
-<td style="text-align: right;">9.2</td>
-<td style="text-align: right;">3.9</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">26.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5.0</td>
-<td style="text-align: right;">90.9</td>
-<td style="text-align: right;">4.9</td>
-<td style="text-align: right;">4.4</td>
-<td style="text-align: right;">0.5</td>
-<td style="text-align: right;">66.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7.2</td>
-<td style="text-align: right;">82.9</td>
-<td style="text-align: right;">7.4</td>
-<td style="text-align: right;">1.3</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">100.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5.6</td>
-<td style="text-align: right;">85.8</td>
-<td style="text-align: right;">6.5</td>
-<td style="text-align: right;">1.5</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">89.8</td>
+<td style="text-align: left;">ExamScore</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">1.00</td>
 </tr>
 </tbody>
 </table>
-
+</div>
 
 </section>
-<section class="slide level2">
 
-<h3 data-number="0.5" id="methods"><span class="header-section-number">0.5</span> Methods</h3>
-<p><strong>Correlational analysis</strong> used to test how student lifestyle habits relate to academic performance</p>
-<h3 data-number="0.6" id="technique"><span class="header-section-number">0.6</span> Technique</h3>
-<ul>
-<li><p><strong>Pearson correlations</strong> drawn using <code>cor()</code> in R</p></li>
-<li><p>Created <strong>bubble-style</strong> plots using <code>corrplot()</code> to visualize magnitude and direction of relationships</p>
-<p><span style="color:blue">Blue</span> = positive<br>
-<span style="color:red">Red</span> = negative<br>
-Circle size = strength</p></li>
-</ul>
+<section id="table-2-bad-habits-correlation-table" class="title-slide slide level1 center">
+<h1>Table 2: Bad Habits Correlation Table</h1>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
+<table class="table" style="font-size: 18px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+StudyHours
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AttendanceRate
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SleepHours
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+ExamScore
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+StudyHours
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+-0.03
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AttendanceRate
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SleepHours
+</td>
+<td style="text-align:right;">
+-0.03
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ExamScore
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
-<section class="slide level2">
 
-<h3 data-number="0.7" id="results"><span class="header-section-number">0.7</span> Results</h3>
-<div class="columns">
+<section id="results" class="title-slide slide level1 center">
+<h1>Results</h1>
 <ul>
 <li><strong>Study hours</strong> shows a <strong>strong positive correlation</strong> with exam scores</li>
+<li><em>Social media hours*</em>and <em>Netflix hours</em> show only <strong>weak negative correlation</strong> with exam scores.</li>
 </ul>
-</div>
-<div class="columns">
+
+<img data-src="slides_files/figure-revealjs/bubble-corrplot-1.png" width="576" class="r-stretch quarto-figure-center"><p class="caption">Bubble-style correlation matrix of student habits and exam score</p></section>
+
+<section id="results-continued" class="title-slide slide level1 center">
+<h1>Results Continued&nbsp;</h1>
+<ul>
+<li><p><em>Attendance rate</em> and <em>Sleep hours</em> also show only <strong>weak positive correlation</strong> with exam scores.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/bubble-corrplot-1.png" width="960"></p>
+<p><img data-src="slides_files/figure-revealjs/badhabits-corrplot-1.png" width="432"></p>
 <figcaption>Bubble-style correlation matrix of student habits and exam score</figcaption>
 </figure>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<h3 data-number="0.8" id="results-continued"><span class="header-section-number">0.8</span> Results Continued</h3>
-<ul>
-<li><em>Social media hours</em> and <em>Netflix hours</em> show only <strong>weak negative correlation</strong> with exam scores</li>
-<li><em>Attendance rate</em> and <em>Sleep hours</em> also show only <strong>weak positive correlation</strong> with exam scores</li>
+</div></li>
 </ul>
+</section>
 
-<img data-src="slides_files/figure-revealjs/badhabits-corrplot-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Bubble-style correlation matrix of student habits and exam score</p></section>
-<section class="slide level2">
-
-<h3 data-number="0.9" id="conclusions-recommendations"><span class="header-section-number">0.9</span> Conclusions &amp; Recommendations</h3>
-<p>📈 More study hours → higher exam scores</p>
-<p>😴 Sleep &amp; 🏫 attendance help a bit</p>
-<p>📱 Social media &amp; 📺 Netflix hurt — but not much</p>
-<p>🎯 Focus on study time — it’s the&nbsp;best&nbsp;predictor</p>
+<section id="conclusions-recommendations" class="title-slide slide level1 center">
+<h1>Conclusions &amp; Recommendations</h1>
+<ul>
+<li><p>📈 More study hours → higher exam scores</p></li>
+<li><p>😴 Sleep &amp; 🏫 attendance help a bit</p></li>
+<li><p>📱 Social media &amp; 📺 Netflix hurt — but not much</p></li>
+<li><p>🎯 Focus on study time — it’s the best predictor</p></li>
+</ul>
 
 </section>
     </div>
@@ -378,7 +443,7 @@ Circle size = strength</p></li>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -538,80 +603,42 @@ Circle size = strength</p></li>
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
