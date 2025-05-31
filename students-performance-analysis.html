@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Malika, Kunal, ZuxiLu">
+<meta name="author" content="Malaika">
+<meta name="author" content="Kunal">
+<meta name="author" content="ZuxiLu">
 
-<title>Assignment 3 by Ctrl+Alt+Analyze</title>
+<title>Assignment 3 by team Ctrl+Alt+Analyze</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="students-performance-analysis_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="students-performance-analysis_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="students-performance-analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="students-performance-analysis_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="students-performance-analysis_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -46,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 3 by Ctrl+Alt+Analyze</h1>
+<h1 class="title">Assignment 3 by team Ctrl+Alt+Analyze</h1>
 </div>
 
 
@@ -54,9 +56,11 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Malika, Kunal, ZuxiLu </p>
+             <p>Malaika </p>
+             <p>Kunal </p>
+             <p>ZuxiLu </p>
           </div>
   </div>
     
@@ -95,9 +99,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="methodology" class="level1">
 <h1>Methodology</h1>
 <div class="cell">
+<div id="tbl-correlation" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Correlation matrix of good habits and exam score
+</figcaption>
+<div aria-describedby="tbl-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Correlation matrix of good habits and exam score</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 22%">
@@ -147,22 +156,29 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </div>
+</figure>
+</div>
+</div>
 <p>This study used correlation analysis to explore the relationship between student habits and academic performance. The dataset included 100 student records with variables such as study hours, class attendance, sleep duration, social media usage, Netflix hours, and final exam scores.</p>
 <p>We categorized the variables into two groups:</p>
-<ol type="1">
-<li><p><strong>Good habits</strong>: <code>StudyHours</code>, <code>AttendanceRate</code>, <code>SleepHours</code></p></li>
-<li><p><strong>Bad habits</strong>: <code>SocialMediaHours</code>, <code>NetflixHours</code></p></li>
-</ol>
-<p>Our target variable for academic performance was <code>ExamScore</code>. To analyze relationships, we calculated Pearson correlation coefficients between each habit variable and <code>ExamScore</code>. This approach allowed us to assess the strength and direction of the linear relationship between variables.</p>
-<p>Before analysis, variables were renamed for clarity (e.g., <code>study_hours_per_day</code> → <code>StudyHours</code>). Only complete cases were used to ensure accuracy. A correlation matrix was computed using <code>cor()</code> in R, and visualized using a bubble-style correlation plot to enhance interpretability.</p>
+<ul>
+<li><p><strong>Good habits:</strong> StudyHours, AttendanceRate, SleepHours</p></li>
+<li><p><strong>Bad habits:</strong> SocialMediaHours, NetflixHours</p></li>
+</ul>
+<p>Our target variable for academic performance was ExamScore. To analyze relationships, we calculated Pearson correlation coefficients between each habit variable and ExamScore. This approach allowed us to assess the strength and direction of the linear relationship between variables.</p>
+<p>Before analysis, variables were renamed for clarity (e.g., study_hours_per_day → StudyHours). Only complete cases were used to ensure accuracy. A correlation matrix was computed using cor() in R, and visualized using <strong>color-coded bar plots</strong> to enhance interpretability. Each bar displays the strength and direction of correlation between a habit and exam performance. We also introduced an Impact label that classifies habits as either <strong>“Helps”</strong> or <strong>“Hurts”</strong> academic outcomes, based on whether their correlation with exam scores is positive or negative.</p>
 <div style="page-break-after: always;"></div>
-<p>Figure <strong>1</strong> below illustrates the correlation among good habits and exam score. Circle size and color represent the strength and direction of correlation, with stronger positive values shown in blue and negative in red.</p>
+<p><a href="#fig-correlation-with-exam-score" class="quarto-xref">Figure&nbsp;1</a> shows a bar plot of how good and bad habits correlate with exam scores. Bars are color-coded to indicate positive (“Helps”) or negative (“Hurts”) impact.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="students-performance-analysis_files/figure-html/Correlation%20among%20habits-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Blue = positive, red = negative, size shows strength</figcaption>
+<div id="fig-correlation-with-exam-score" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlation-with-exam-score-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="students-performance-analysis_files/figure-html/fig-correlation-with-exam-score-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation-with-exam-score-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Correlation with exam score
+</figcaption>
 </figure>
 </div>
 </div>
@@ -172,10 +188,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="investigating-good-habits" class="level1">
 <h1>Investigating ‘good’ habits’</h1>
 <ul>
-<li><p>The chart shows how three good habits relate to student exam scores:</p>
-<ul>
-<li>StudyHours, AttendanceRate, and SleepHours.</li>
-</ul></li>
+<li><p><a href="#fig-how" class="quarto-xref">Figure&nbsp;2</a> summarizes how StudyHours, AttendanceRate, and SleepHours relate to exam scores using a labeled bar plot.</p></li>
 <li><p><strong>StudyHours</strong> has a <strong>strong positive correlation</strong> with ExamScore (r = 0.83).</p>
 <ul>
 <li>Students who study more tend to score higher.</li>
@@ -185,13 +198,18 @@ ul.task-list li input[type="checkbox"] {
 <li>Attendance (r = 0.09) and Sleep (r = 0.12) have little impact on scores.</li>
 </ul></li>
 <li><p><strong>Conclusion:</strong> Among the good habits, <strong>studying regularly</strong> is clearly the most effective for better academic performance.</p></li>
+<li><p>use <a href="#fig-how" class="quarto-xref">Figure&nbsp;2</a></p></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="students-performance-analysis_files/figure-html/bubble-corrplot-1.png" class="img-fluid figure-img" width="528"></p>
-<figcaption>Bubble-style correlation matrix of student habits and exam score</figcaption>
+<div id="fig-how" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-how-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="students-performance-analysis_files/figure-html/fig-how-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-how-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: How Habits Correlate with Exam Performance
+</figcaption>
 </figure>
 </div>
 </div>
@@ -201,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="investigating-bad-habits" class="level1">
 <h1>Investigating ‘bad’ habits’</h1>
 <ul>
-<li><p>The chart shows how two bad habits relate to exam performance:</p>
+<li><p><a href="#fig-how-bad" class="quarto-xref">Figure&nbsp;3</a> shows how two bad habits relate to exam performance:</p>
 <ul>
 <li>SocialMediaHours and NetflixHours.</li>
 </ul></li>
@@ -209,18 +227,18 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>More time spent on these may slightly lower scores.</li>
 </ul></li>
-<li><p>The two habits are <strong>not correlated with each other</strong> (r = 0.01).</p>
-<ul>
-<li>Social media and Netflix usage appear to be independent.</li>
-</ul></li>
 <li><p><strong>Conclusion:</strong> These habits may slightly harm performance, but the effect is <strong>not strong</strong> or highly predictive.</p></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="students-performance-analysis_files/figure-html/bubble-corrplot-bad-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Bubble-style correlation matrix of bad habits and exam score</figcaption>
+<div id="fig-how-bad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-how-bad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="students-performance-analysis_files/figure-html/fig-how-bad-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-how-bad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: How Bad Habits Correlate with Exam Performance
+</figcaption>
 </figure>
 </div>
 </div>
@@ -229,13 +247,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="results" class="level1">
 <h1>Results:</h1>
-<p>The table below summarizes how each lifestyle habit correlates with academic performance.</p>
-<p><strong>Table 1</strong> shows that <code>StudyHours</code> has a strong positive relationship with <code>ExamScore</code> (r = 0.83), making it the most significant factor influencing academic success. <code>AttendanceRate</code> (r = 0.09) and <code>SleepHours</code> (r = 0.12) show weak positive associations, suggesting minor contributions.</p>
-<p>In contrast, both <code>SocialMediaHours</code> and <code>NetflixHours</code> have weak negative correlations with exam scores (r = -0.17 each), indicating that increased screen time may slightly reduce performance. However, the strength of these negative relationships is modest and not highly predictive on their own.</p>
-<p>Overall, the results emphasize that consistent study habits are the most important contributor to higher academic performance, while excessive media consumption may act as a mild deterrent.</p>
+<p>The bar plots and <a href="#tbl-correlation-with-exam-score-for-each-habit" class="quarto-xref">Table&nbsp;2</a> shows how each lifestyle habit correlates with academic performance. The colors in the plots indicate whether a habit <em>helps</em> (positive correlation) or <em>hurts</em> (negative correlation) exam scores.</p>
+<p>StudyHours shows the strongest positive relationship with ExamScore (r = 0.83), reinforcing its importance for academic success. AttendanceRate (r = 0.09) and SleepHours (r = 0.12) show minor positive associations.</p>
+<p>On the other hand, both SocialMediaHours and NetflixHours have weak negative correlations with ExamScore (r = -0.17 each), suggesting these habits may slightly hinder performance.</p>
+<p>These patterns are visualized clearly through labeled bar plots, making it easier to interpret the influence of each habit on academic performance.</p>
 <div class="cell">
+<div id="tbl-correlation-with-exam-score-for-each-habit" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-correlation-with-exam-score-for-each-habit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Correlation with Exam Score for Each Habit
+</figcaption>
+<div aria-describedby="tbl-correlation-with-exam-score-for-each-habit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -267,15 +291,19 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </div>
+</figure>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </section>
 <section id="discussion-conclusion-and-recommendations" class="level1">
 <h1>Discussion, Conclusion and Recommendations:</h1>
 <ul>
-<li><p>The findings from this analysis reinforce a key academic principle: consistent study habits have the strongest impact on student performance. Among all the lifestyle factors examined, <code>StudyHours</code> had a clear and substantial correlation with <code>ExamScore</code>, while other good habits like <code>AttendanceRate</code> and <code>SleepHours</code> played minor roles.</p></li>
-<li><p>On the other hand, bad habits such as time spent on social media and Netflix showed weak negative correlations with academic performance. Although these habits may slightly affect scores, they are not as influential as focused study time. This suggests that managing distractions is helpful, but not sufficient without active effort toward academic preparation.</p></li>
-<li><p>From a practical perspective, students should prioritise building regular study routines, as this habit alone appears to yield the most significant academic benefit. Digital distractions should be monitored and managed, but not overly blamed for performance gaps without considering time spent studying.</p></li>
-<li><p>Future research could explore how motivation, learning environment, or time management interact with these habits. Additionally, collecting longitudinal data could help identify whether these correlations hold consistently over time or vary by context.</p></li>
+<li><p>The findings from this analysis reinforce a key academic insight: consistent study habits have the strongest influence on student performance. Among all habits examined, StudyHours had the clearest and most substantial correlation with ExamScore (r = 0.83).</p></li>
+<li><p>The updated bar plots simplify interpretation by highlighting which habits help or hurt academic performance. Habits like AttendanceRate and SleepHours offered minor positive impacts, while SocialMediaHours and NetflixHours showed weak negative correlations.</p></li>
+<li><p>Introducing the “Impact” category (Helps/Hurts) made these trends easier to communicate visually, improving accessibility for all readers. While digital distractions like social media and Netflix usage may slightly reduce exam performance, they are not as significant as maintaining regular study routines.</p></li>
+<li><p>Practically, students should focus on strengthening study habits while being mindful of time spent on digital entertainment. These recommendations are supported by clear visual evidence and measurable correlations.</p></li>
+<li><p>Future studies could explore whether these relationships hold in larger or more diverse samples, or how other variables such as motivation or time management interact with these habits.</p></li>
 </ul>
 </section>
 <section id="references" class="level1">

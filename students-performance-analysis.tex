@@ -229,7 +229,7 @@
 % Title and date
 
 \title{Assignment 3 by team Ctrl+Alt+Analyze}
-\date{30 May 2025}
+\date{31 May 2025}
 
 \def\Date{\number\day}
 \def\Month{\ifcase\month\or
@@ -325,7 +325,7 @@
 % Authors
 
 \author{\sf{\Large\textbf{Malaika} \\[0.5cm]}{\Large\textbf{Kunal} \\[0.5cm]}{\Large\textbf{ZuxiLu} \\[0.5cm]}}
-\lfoot{\sf Malaika, Kunal, ZuxiLu: 30 May 2025}
+\lfoot{\sf Malaika, Kunal, ZuxiLu: 31 May 2025}
 \begin{document}
 \maketitle
 
@@ -404,21 +404,12 @@ and recommendations.
   >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2529}}
   >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1379}}
   >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1264}}@{}}
-\caption{Correlation matrix of good habits and exam
-score}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-study\_hours\_per\_day
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-attendance\_percentage
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-sleep\_hours
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-exam\_score
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
+
+\caption{\label{tbl-correlation}Correlation matrix of good habits and
+exam score}
+
+\tabularnewline
+
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
@@ -438,6 +429,7 @@ study\_hours\_per\_day & 1.00 & 0.03 & -0.03 & 0.83 \\
 attendance\_percentage & 0.03 & 1.00 & 0.01 & 0.09 \\
 sleep\_hours & -0.03 & 0.01 & 1.00 & 0.12 \\
 exam\_score & 0.83 & 0.09 & 0.12 & 1.00 \\
+
 \end{longtable}
 
 This study used correlation analysis to explore the relationship between
@@ -472,11 +464,22 @@ with exam scores is positive or negative.
 
 \newpage
 
-Figure 1 shows a bar plot of how good and bad habits correlate with exam
-scores. Bars are color-coded to indicate positive (``Helps'') or
-negative (``Hurts'') impact.
+Figure~\ref{fig-correlation-with-exam-score} shows a bar plot of how
+good and bad habits correlate with exam scores. Bars are color-coded to
+indicate positive (``Helps'') or negative (``Hurts'') impact.
 
-\pandocbounded{\includegraphics[keepaspectratio]{students-performance-analysis_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{students-performance-analysis_files/figure-pdf/fig-correlation-with-exam-score-1.pdf}}
+
+}
+
+\caption{\label{fig-correlation-with-exam-score}Correlation with exam
+score}
+
+\end{figure}%
 
 \newpage
 
@@ -484,8 +487,8 @@ negative (``Hurts'') impact.
 
 \begin{itemize}
 \item
-  Figure 2 summarizes how StudyHours, AttendanceRate, and SleepHours
-  relate to exam scores using a labeled bar plot.
+  Figure~\ref{fig-how} summarizes how StudyHours, AttendanceRate, and
+  SleepHours relate to exam scores using a labeled bar plot.
 \item
   \textbf{StudyHours} has a \textbf{strong positive correlation} with
   ExamScore (r = 0.83).
@@ -510,19 +513,18 @@ negative (``Hurts'') impact.
   regularly} is clearly the most effective for better academic
   performance.
 \item
-  use Figure~\ref{fig-correlation-bar-plot}
+  use Figure~\ref{fig-how}
 \end{itemize}
 
 \begin{figure}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{students-performance-analysis_files/figure-pdf/fig-correlation-bar-plot-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{students-performance-analysis_files/figure-pdf/fig-how-1.pdf}}
 
 }
 
-\caption{\label{fig-correlation-bar-plot}How Habits Correlate with Exam
-Performance}
+\caption{\label{fig-how}How Habits Correlate with Exam Performance}
 
 \end{figure}%
 
@@ -532,7 +534,8 @@ Performance}
 
 \begin{itemize}
 \item
-  The chart shows how two bad habits relate to exam performance:
+  Figure~\ref{fig-how-bad} shows how two bad habits relate to exam
+  performance:
 
   \begin{itemize}
   \tightlist
@@ -549,14 +552,6 @@ Performance}
     More time spent on these may slightly lower scores.
   \end{itemize}
 \item
-  The two habits are \textbf{not correlated with each other} (r = 0.01).
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Social media and Netflix usage appear to be independent.
-  \end{itemize}
-\item
   \textbf{Conclusion:} These habits may slightly harm performance, but
   the effect is \textbf{not strong} or highly predictive.
 \end{itemize}
@@ -565,12 +560,12 @@ Performance}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{students-performance-analysis_files/figure-pdf/fig-bad-habits-barplot-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{students-performance-analysis_files/figure-pdf/fig-how-bad-1.pdf}}
 
 }
 
-\caption{\label{fig-bad-habits-barplot}How Bad Habits Correlate with
-Exam Performance}
+\caption{\label{fig-how-bad}How Bad Habits Correlate with Exam
+Performance}
 
 \end{figure}%
 
@@ -578,7 +573,8 @@ Exam Performance}
 
 \section{Results:}\label{results}
 
-The bar plots and Table~\ref{tbl-good-habits-correlation} summarize how
+The bar plots and
+Table~\ref{tbl-correlation-with-exam-score-for-each-habit} shows how
 each lifestyle habit correlates with academic performance. The colors in
 the plots indicate whether a habit \emph{helps} (positive correlation)
 or \emph{hurts} (negative correlation) exam scores.
@@ -597,8 +593,8 @@ performance.
 
 \begin{longtable}[]{@{}lr@{}}
 
-\caption{\label{tbl-good-habits-correlation}Correlation with Exam Score
-for Each Habit}
+\caption{\label{tbl-correlation-with-exam-score-for-each-habit}Correlation
+with Exam Score for Each Habit}
 
 \tabularnewline
 

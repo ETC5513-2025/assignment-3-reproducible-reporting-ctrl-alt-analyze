@@ -4,7 +4,7 @@ author:
 - Malaika
 - Kunal
 - ZuxiLu
-format:
+format: 
   quarto-monash/report-pdf:
     toc: true
     number-sections: true
