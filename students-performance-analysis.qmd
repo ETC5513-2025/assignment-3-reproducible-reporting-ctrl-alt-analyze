@@ -87,8 +87,8 @@ Authors:
 
 # Executive summary
 
--   This report investigates the relationship between student lifestyle habits and academic performance using correlation analysis. We classify study hours, class attendance, and sleep duration as "good" habits, while the time spent on social media, and Netflix usage are treated as "bad" habits.
--   Our findings indicate that study hours have the strongest positive correlation with exam scores, while time spent on social media and Netflix show weak negative correlations. Results from our study can be used to guide and inform students about the relationship between their lifestyle choices and academic success.
+-   This report investigates the relationship between student lifestyle habits and academic performance using correlation analysis. Study hours, class attendance, and sleep duration are classified as “good” habits, while time spent on social media and Netflix are considered “bad” habits.
+-   Our findings show that study hours have the strongest positive correlation with exam scores, whereas social media and Netflix usage exhibit weak negative correlations. These insights can help students make more informed choices to improve academic outcomes.
 
 # Introduction
 
