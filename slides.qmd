@@ -17,11 +17,11 @@ editor: visual
 
 ## Ctrl+Alt+Analyze
 
-*By: Malika, Kunal, ZuxiLu*  
+*By: Malika, Kunal, ZuxiLu*\
 **ETC5513 – Collaborative & Reproducible Practices**
 
-- Rebooting learning through daily habits  
-- **Ctrl** your study time, **Alt** your distractions, **Del** your doubts.
+-   Rebooting learning through daily habits\
+-   **Ctrl** your study time, **Alt** your distractions, **Del** your doubts.
 
 ```{r}
 #| label: setup
@@ -35,8 +35,6 @@ library(here)
 library(corrplot)
 library(kableExtra)
 ```
-
-
 
 ```{r}
 #| label: load-data
@@ -76,50 +74,56 @@ data_clean <- data |>
 
 ## Problem Introduction
 
-- Academic performance is affected by daily habits like:
-  - Study hours per day
-  - Classroom attendance
-  - Sleep hours
+-   Academic performance is affected by daily habits like:
 
-- On the other hand, spending too much time on:
-  - Social media
-  - Streaming platforms like Netflix
-  
-- **Research Objective:**  
-  Quantify the relationship between student habits and academic performance using correlation analysis.
+    -   Study hours per day
+    -   Classroom attendance
+    -   Sleep hours
 
-- **Goal:** Identify which habits support academic success and which ones hinder it.
+-   On the other hand, spending too much time on:
+
+    -   Social media
+    -   Streaming platforms like Netflix
+
+-   **Research Objective:**\
+    Quantify the relationship between student habits and academic performance using correlation analysis.
+
+-   **Goal:** Identify which habits support academic success and which ones hinder it.
 
 ## Dataset Description
 
-- 100 students | 16 variables | Lifestyle + Exam performance
+-   100 students \| 16 variables \| Lifestyle + Exam performance
 
-- Main variables:
-  - Study hours per day
-  - Class attendance (%)
-  - Sleep hours
-  - Social media hours
-  - Netflix hours
-  - Exam score
+-   Main variables:
 
+    -   Study hours per day
+    -   Class attendance (%)
+    -   Sleep hours
+    -   Social media hours
+    -   Netflix hours
+    -   Exam score
 
 ## Grouped into:
-  - **Good habits:** `StudyHours`, `AttendanceRate`, `SleepHours`
-  - **Bad habits:** `SocialMediaHours`, `NetflixHours`
 
-- Target variable: `ExamScore`
+-   **Good habits:** `StudyHours`, `AttendanceRate`, `SleepHours`
 
-- Dataset was cleaned and renamed for clarity.
+-   **Bad habits:** `SocialMediaHours`, `NetflixHours`
+
+-   Target variable: `ExamScore`
+
+-   Dataset was cleaned and renamed for clarity.
 
 ## Methods
 
-- **Correlational analysis** used to test how student lifestyle habits relate to academic performance
+-   **Correlational analysis** used to test how student lifestyle habits relate to academic performance
 
-- **Pearson correlations** calculated using `cor()` in R  
-- Visualized using **bar plots** with `ggplot2()`:
-  - **Blue** = Helps (positive correlation)  
-  - **Red** = Hurts (negative correlation)  
-  - Bars labeled with correlation values
+-   **Pearson correlations** calculated using `cor()` in R\
+
+-   Visualized using **bar plots** with `ggplot2()`:
+
+    -   **Blue** = Helps (positive correlation)\
+    -   **Red** = Hurts (negative correlation)\
+    -   Bars labeled with correlation values
 
 ## Table 1: Good Habits Correlation Table
 
@@ -146,10 +150,8 @@ colnames(corr_with_score) <- "Correlation with ExamScore"
 # Display
 kable(corr_with_score, caption = "Table 1: Correlation of Study, Attendance, Sleep, and ExamScore")
 ```
+
 ## Table 2: Bad Habits Correlation Table
-
-
-
 
 ```{r}
 #| echo: false
@@ -172,11 +174,12 @@ kable(bad_cor_matrix, digits = 2) |>
 
 ## Results
 
-- **StudyHours** has **strongest positive correlation** with exam scores (r = 0.83)
-- **AttendanceRate** and **SleepHours** show **weak positive correlations**
-- **SocialMediaHours** and **NetflixHours** each show **weak negative correlations**
+-   **StudyHours** has **strongest positive correlation** with exam scores (r = 0.83)
+-   **AttendanceRate** and **SleepHours** show **weak positive correlations**
+-   **SocialMediaHours** and **NetflixHours** each show **weak negative correlations**
 
-## Results Continued 
+## Results Continued
+
 Bar plots below show how each habit helps or hurts academic performance:
 
 ```{r}
@@ -219,10 +222,10 @@ ggplot(cor_df, aes(x = Habit, y = Correlation, fill = Impact)) +
 
 ## Conclusions & Recommendations
 
-- **StudyHours** is the most important factor (r = 0.83)
-- **Attendance** and **Sleep** have minor benefits
-- **Social media** and **Netflix** show mild negative impact
+-   **StudyHours** is the most important factor (r = 0.83)
+-   **Attendance** and **Sleep** have minor benefits
+-   **Social media** and **Netflix** show mild negative impact
 
-👉 Students should prioritize studying and manage distractions smartly
+👉 Students should prioritize studying and manage distractions smartly.
 
-👉 Data-driven habits can lead to better academic outcomes
+👉 Data-driven habits can lead to better academic outcomes.
